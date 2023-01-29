@@ -1,0 +1,24 @@
+@function _fontClamp($minFontSize, $maxFontSize, $minWidth: 25rem, $maxWidth: 80rem) {
+  $slope: calc(($maxFontSize - $minFontSize) / ($maxWidth - $minWidth));
+  $yAxis: -$minWidth * $slope + $minFontSize;
+  $slope: ($slope * 100) + 0vw;
+
+  @return clamp($minFontSize, calc(#{$yAxis} + #{$slope}), $maxFontSize);
+}
+
+@mixin fontClamp($minFontSize, $maxFontSize, $minWidth: 25rem, $maxWidth: 80rem) {
+  @supports (not (font-size: calc(0.875rem + 0.3vw))) {
+    font-size: $minFontSize;
+    @media (min-width: $maxWidth) { font-size: $maxFontSize; }
+  }
+
+  @supports (font-size: calc(0.875rem + 0.3vw)) and (not (font-size: clamp(1rem, 3vw, 2rem))) {
+    $slope: calc(($maxFontSize - $minFontSize) / 0.8rem) + 0vw;
+    font-size: calc(#{$minFontSize} + #{$slope});
+    @media (min-width: $maxWidth) { font-size: $maxFontSize; }
+  }
+
+  @supports (font-size: clamp(1rem, 3vw, 2rem)) {
+    font-size: _fontClamp($minFontSize, $maxFontSize, $minWidth, $maxWidth);
+  }
+}
