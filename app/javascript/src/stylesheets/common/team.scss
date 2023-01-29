@@ -1,1 +1,89 @@
 @use "../variables" as *;
+
+.teams-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+
+  border: var(--border-thickness) solid var(--border-color);
+  border-radius: var(--wrapper-border-radius);
+
+  &-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    user-select: none;
+    pointer-events: none;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: saturate(0.1) opacity(0.2);
+  }
+}
+
+.team-seperator {
+  width: 0;
+  border-left: var(--border-thickness) solid var(--border-color);
+}
+
+.team {
+  width: 50%;
+  padding: var(--block-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // Main image / Avatars
+  &__image {
+    margin-block: 4rem 2.5rem;
+    height: 10rem;
+    overflow: hidden;
+
+    img {
+      padding: 0.5rem;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    &--one {
+      width: 10rem;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    &--all {
+      display: flex;
+      align-items: center;
+      grid-gap: 0.5rem;
+      img {
+        width: 5rem;
+        height: 5rem;
+        padding: 0.5rem;
+        background: #fff;
+      }
+    }
+  }
+
+  &__name {
+    @include fontClamp(1.25rem, 3rem);
+    text-transform: uppercase;
+  }
+
+  &__info {
+    @include fontClamp(0.875rem, 1.125rem);
+    margin-block: 0.25rem 1rem;
+    color: var(--secondary-text-clr);
+    text-align: center;
+    line-height: 1.5rem;
+    height: 4rem;
+  }
+
+
+  &__points {
+    @include fontClamp(3rem, 8rem);
+    margin-block: 1rem;
+    font-family: 'Lilita One', cursive;
+  }
+}
