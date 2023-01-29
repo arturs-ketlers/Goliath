@@ -1,0 +1,23 @@
+@use "theme";
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+
+  color: var(--text-clr);
+  background-color: var(--background);
+
+  font-family: 'Comfortaa', cursive;
+  font-weight: 400;
+}
+
+img { max-width: 100%; }
+* { box-sizing: border-box; }
+
+
+main {
+  padding: var(--main-pad);
+  height: 100%;
+  position: relative;
+}

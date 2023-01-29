@@ -1,0 +1,3 @@
+onload = () => {
+  console.info('onload!');
+}

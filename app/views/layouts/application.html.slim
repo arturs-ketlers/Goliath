@@ -1,0 +1,15 @@
+doctype html
+html lang=I18n.locale data-theme='light'
+  head
+    title = "Goliath"
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    link href=asset_path('favicon.ico') rel="icon"
+
+    = csrf_meta_tags
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    main
+      = yield
