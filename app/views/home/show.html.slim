@@ -14,9 +14,10 @@ picture
     .team__image.team__image--one
       = image_tag one.avatar(:main)
     .team__name
-      = one.name || "Artūrs"
+      = one.name
     .team__info
       div = "#{distance} #{unit}"
+
     .team__points
       = format("%.0f", @team_one.points)
 
@@ -36,6 +37,6 @@ picture
       = team_name
     .team__info
       div = "#{@team_all.distance} #{unit}"
-      div = "#{@team_all.participant_count} dalībnieki"
+      div = I18n.t('participant', count: @team_all.participant_count)
     .team__points
       = format("%.0f", @team_all.points)

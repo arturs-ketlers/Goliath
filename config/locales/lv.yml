@@ -1,0 +1,4 @@
+lv:
+  participant:
+    one: '%{count} dalībnieks'
+    other: '%{count} dalībnieki'

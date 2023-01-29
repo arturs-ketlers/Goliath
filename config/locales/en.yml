@@ -1,2 +1,4 @@
 en:
-  hello: "Hello world"
+  participant:
+    one: '%{count} participant'
+    other: '%{count} participants'

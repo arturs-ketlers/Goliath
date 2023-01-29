@@ -16,6 +16,12 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+# Ignore config files
+/.env
+/.env.test
+/.env.production
+/.env.development
 config/database.yml
 
 # Ignore pidfiles, but keep the directory.
