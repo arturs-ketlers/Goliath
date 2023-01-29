@@ -2,3 +2,4 @@ en:
   participant:
     one: '%{count} participant'
     other: '%{count} participants'
+  rules: 'Rules'
