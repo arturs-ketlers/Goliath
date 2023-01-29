@@ -1,0 +1,41 @@
+// TODO: Setting (distance unit)
+- unit = 'km'
+// TODO: Settings - team name (all)
+- team_name = "TEAM NAME"
+
+picture
+  source srcset=asset_path('bg.webp') type="image/webp"
+  img.teams-wrapper-bg aria-hidden="true" src=asset_path('bg.jpeg')
+
+.teams-wrapper
+  .team
+    - one = @team_one.participants.first || Participant.new
+    - distance = @team_one.distance
+    .team__image.team__image--one
+      = image_tag one.avatar(:main)
+    .team__name
+      = one.name || "Artūrs"
+    .team__info
+      div = "#{distance} #{unit}"
+    .team__points
+      = format("%.0f", @team_one.points)
+
+  .team-seperator
+
+  .team
+    - all = @team_all.participants.order('total_distance desc').limit(3)
+    - distance = @team_all.distance
+    .team__image.team__image--all
+      - if all.present?
+        - all.each do |a|
+          = image_tag a.avatar(:main)
+      - else
+        - 3.times do |i|
+          = image_tag asset_url('missing/participant.png')
+    .team__name
+      = team_name
+    .team__info
+      div = "#{@team_all.distance} #{unit}"
+      div = "#{@team_all.participant_count} dalībnieki"
+    .team__points
+      = format("%.0f", @team_all.points)
