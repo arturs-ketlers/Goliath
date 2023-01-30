@@ -1,7 +1,5 @@
-// TODO: Setting (distance unit)
-- unit = 'km'
-// TODO: Settings - team name (all)
-- team_name = "TEAM NAME"
+- unit = Setting.value_for('unit')
+- team_name = Setting.uncached_value_for('team_name')
 
 picture
   source srcset=asset_path('bg.webp') type="image/webp"

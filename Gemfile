@@ -33,6 +33,12 @@ gem 'webpacker', '~> 5.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Active admin / admin panel
+gem 'activeadmin', github: 'activeadmin'
+gem 'ckeditor', '4.2.4'
+gem 'devise'
+gem 'globalize'
+
 # User Agent parser
 gem "browser"
 
