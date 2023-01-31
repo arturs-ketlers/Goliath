@@ -79,22 +79,7 @@ namespace :db do
   end
 end
 
-namespace :cache do
-  desc "Clear cache"
-  task "clear" do
-    on roles(:db, select: :primary) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, "cache:clear"
-        end
-      end
-    end
-  end
-end
-
 after 'deploy:migrate', 'db:seed'
-after 'deploy:migrate', 'cache:clear'
-after 'deploy:migrate', 'sitemap:refresh'
 
 # before "deploy:assets:precompile", "deploy:yarn_install"
 
