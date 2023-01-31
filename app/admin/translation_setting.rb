@@ -34,6 +34,7 @@ ActiveAdmin.register TranslationSetting do
     f.inputs do
       # TODO: Something wrong with I18n.available_locales - returns all, not only defined in confog
       locales = %w[lv en]
+      # locales = I18n.available_locales
 
       locales.each do |loc|
         unless f.object.translations.exists?(locale: loc)
