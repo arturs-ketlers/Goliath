@@ -93,7 +93,11 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+<<<<<<< HEAD
     capistrano-bundler (2.1.0)
+=======
+    capistrano-bundler (2.0.1)
+>>>>>>> 2fe183521c1dbb3481674c7703726de5ad387769
       capistrano (~> 3.1)
     capistrano-linked-files (1.2.0)
       capistrano (~> 3.1)
@@ -103,10 +107,13 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+<<<<<<< HEAD
     capistrano-sidekiq (2.3.0)
       capistrano (>= 3.9.0)
       capistrano-bundler
       sidekiq (>= 6.0)
+=======
+>>>>>>> 2fe183521c1dbb3481674c7703726de5ad387769
     capistrano3-puma (1.2.1)
       capistrano (~> 3.0)
       puma (>= 2.6)
@@ -136,6 +143,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     ffi (1.15.5)
     formtastic (4.0.0)
@@ -205,6 +216,7 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
+<<<<<<< HEAD
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-smtp (0.3.3)
@@ -215,6 +227,16 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     nokogiri (1.13.10-x86_64-linux)
+=======
+    net-scp (4.0.0)
+      net-ssh (>= 2.6.5, < 8.0.0)
+    net-smtp (0.3.3)
+      net-protocol
+    net-ssh (7.0.1)
+    nio4r (2.5.8)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
+>>>>>>> 2fe183521c1dbb3481674c7703726de5ad387769
       racc (~> 1.4)
     orm_adapter (0.5.0)
     paperclip (6.1.0)
@@ -310,7 +332,11 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+<<<<<<< HEAD
     sshkit (1.21.2)
+=======
+    sshkit (1.21.3)
+>>>>>>> 2fe183521c1dbb3481674c7703726de5ad387769
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.8.2)
@@ -346,7 +372,10 @@ GEM
 
 PLATFORMS
   ruby
+<<<<<<< HEAD
   x86_64-linux
+=======
+>>>>>>> 2fe183521c1dbb3481674c7703726de5ad387769
 
 DEPENDENCIES
   activeadmin!
@@ -358,11 +387,15 @@ DEPENDENCIES
   capistrano-linked-files
   capistrano-rails
   capistrano-rvm
+<<<<<<< HEAD
   capistrano-sidekiq
+=======
+>>>>>>> 2fe183521c1dbb3481674c7703726de5ad387769
   capistrano3-puma (= 1.2.1)
   capybara (>= 3.26)
   ckeditor (= 4.2.4)
   devise
+  dotenv-rails
   globalize
   listen (~> 3.3)
   mysql2 (>= 0.4.4, < 0.6.0)
@@ -384,4 +417,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.4.5
+   2.1.4
