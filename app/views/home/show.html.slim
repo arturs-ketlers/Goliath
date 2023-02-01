@@ -1,16 +1,16 @@
 - unit = Setting.value_for('unit')
 - team_name = Setting.uncached_value_for('team_name')
 
-picture
-  source srcset=asset_path('bg.webp') type="image/webp"
-  img.teams-wrapper-bg aria-hidden="true" src=asset_path('bg.jpeg')
+/ picture
+/ source srcset=asset_pack_path('bg.webp') type="image/webp"
+= image_pack_tag('bg.jpeg', class: 'teams-wrapper-bg', aria: { hidden: "true" })
 
 .teams-wrapper
   .team
     - one = @team_one.participants.first || Participant.new
     - distance = @team_one.distance
     .team__image.team__image--one
-      = image_tag one.avatar(:main)
+      = image_pack_tag one.avatar(:main)
     .team__name
       = one.name
     .team__info
@@ -27,10 +27,10 @@ picture
     .team__image.team__image--all
       - if all.present?
         - all.each do |a|
-          = image_tag a.avatar(:main)
+          = image_pack_tag a.avatar(:main)
       - else
         - 3.times do |i|
-          = image_tag asset_url('missing/participant.png')
+          = image_pack_tag asset_url('missing/participant.png')
     .team__name
       = team_name
     .team__info

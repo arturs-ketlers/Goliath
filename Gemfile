@@ -53,14 +53,6 @@ group :development, :test do
 end
 
 group :development do
-  # Deploy
-  gem 'capistrano', '~> 3.14.0'
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler', '>= 1.1.0'
-  gem 'capistrano-rvm'
-  gem 'capistrano-linked-files'
-  gem 'capistrano3-puma', '1.2.1'
-
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
@@ -75,7 +67,6 @@ group :development do
   gem 'capistrano-bundler', '>= 1.1.0'
   gem 'capistrano-rvm'
   gem 'capistrano-linked-files'
-  gem 'capistrano-sidekiq'
   gem 'capistrano3-puma', '1.2.1'
 end
 

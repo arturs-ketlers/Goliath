@@ -8,3 +8,6 @@ import Rails from "@rails/ujs"
 Rails.start();
 
 require("../src/scripts/main");
+
+const images = require.context("../images", true);
+const imagePath = name => images(name, true);
