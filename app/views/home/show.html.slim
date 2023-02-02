@@ -10,7 +10,10 @@
     - one = @team_one.participants.first || Participant.new
     - distance = @team_one.distance
     .team__image.team__image--one
-      = image_pack_tag one.avatar(:main)
+      - if one.avatar.present?
+        = image_tag(one.avatar.url(:main))
+      - else
+        = image_pack_tag one.avatar(:main)
     .team__name
       = one.name
     .team__info
@@ -27,7 +30,10 @@
     .team__image.team__image--all
       - if all.present?
         - all.each do |a|
-          = image_pack_tag a.avatar(:main)
+          - if a.avatar.present?
+            = image_tag(a.avatar.url(:main))
+          - else
+            = image_pack_tag a.avatar(:main)
       - else
         - 3.times do |i|
           = image_pack_tag 'missing/participant.png'
