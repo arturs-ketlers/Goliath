@@ -8,13 +8,18 @@
 
     // Box
     --main-pad: 1.25rem;
-    --block-pad: 2rem;
+    --block-pad: 1rem;
 
     --border-thickness: 1px;
     --border-color: rgba(0, 0, 0, 0.1);
     --wrapper-border-radius: 0.625rem;
   }
 
+  @media(min-width: 600px) {
+    :root {
+      --block-pad: 1.5rem;
+    }
+  }
 
   // Default theme
   // html[data-theme='light'] {}

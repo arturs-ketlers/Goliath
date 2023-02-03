@@ -9,11 +9,12 @@
   .team
     - one = @team_one.participants.first || Participant.new
     - distance = @team_one.distance
-    .team__image.team__image--one
-      - if one.avatar.present?
-        = image_tag(one.avatar.url(:main))
-      - else
-        = image_pack_tag one.avatar(:main)
+    .team__image-wrapper.team__image-wrapper--one
+      .team__image
+        - if one.avatar.present?
+          = image_tag(one.avatar.url(:main))
+        - else
+          = image_pack_tag one.avatar(:main)
     .team__name
       = one.name
     .team__info
@@ -27,16 +28,18 @@
   .team
     - all = @team_all.participants.order('total_distance desc').limit(3)
     - distance = @team_all.distance
-    .team__image.team__image--all
+    .team__image-wrapper.team__image-wrapper--all
       - if all.present?
         - all.each do |a|
-          - if a.avatar.present?
-            = image_tag(a.avatar.url(:main))
-          - else
-            = image_pack_tag a.avatar(:main)
+          .team__image
+            - if a.avatar.present?
+              = image_tag(a.avatar.url(:main))
+            - else
+              = image_pack_tag a.avatar(:main)
       - else
         - 3.times do |i|
-          = image_pack_tag 'missing/participant.png'
+          .team__image
+            = image_pack_tag 'missing/participant.png'
     .team__name
       = team_name
     .team__info

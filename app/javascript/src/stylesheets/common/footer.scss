@@ -1,9 +1,16 @@
 footer {
-  position: fixed;
-  right: calc(var(--main-pad) + var(--block-pad) / 2);
+  position: absolute;
   bottom: 0.125rem;
+  //
+  width: 100%;
+  text-align: center;
 
   font-size: 0.6875rem;
   color: var(--secondary-text-clr);
   opacity: 0.64;
+
+  @media (min-width: 600px) {
+    width: auto;
+    right: calc(var(--main-pad) + var(--block-pad) / 2);
+  }
 }
