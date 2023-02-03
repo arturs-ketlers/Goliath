@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_30_190912) do
+ActiveRecord::Schema.define(version: 2023_02_03_113517) do
 
   create_table "admin_users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2023_01_30_190912) do
     t.decimal "distance", precision: 8, scale: 3
     t.bigint "participant_id", null: false
     t.date "datetime"
+    t.integer "steps"
+    t.text "comment"
     t.index ["participant_id"], name: "index_results_on_participant_id"
   end
 

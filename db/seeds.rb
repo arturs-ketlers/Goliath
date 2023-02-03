@@ -79,7 +79,13 @@ settings = [
     items: [
       { key: 'team_name', value: '' }
     ]
-  }
+  },
+  {
+    category: 'page',
+    items: [
+      { key: 'rules_url', value: '' }
+    ]
+  },
 ]
 
 settings.each do |block|
