@@ -1,4 +1,4 @@
-- unit = Setting.value_for('unit')
+- unit = Setting.uncached_value_for('unit')
 - team_name = Setting.uncached_value_for('team_name')
 
 / picture
@@ -30,8 +30,11 @@
     - distance = @team_all.distance
     .team__image-wrapper.team__image-wrapper--all
       - if all.present?
-        - all.each do |a|
+        - all.each_with_index do |a, i|
           .team__image
+            - if i.zero?
+              span.team__top-score
+                = "#{format("%.2f", a.total_distance)} #{unit}"
             - if a.avatar.present?
               = image_tag(a.avatar.url(:main))
             - else
