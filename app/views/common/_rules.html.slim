@@ -1,4 +1,4 @@
-.rules
-  // TODO: Open modal or something ...
-  button[data-target='']
-    = I18n.t('rules')
+- rules_url = Setting.uncached_value_for('rules_url')
+- if rules_url.present?
+  .rules
+    = link_to(I18n.t('rules'), rules_url, target: '_blank', rel: 'noreferer')
