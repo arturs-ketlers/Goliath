@@ -15,12 +15,16 @@ class Team
     Participant.try(:"team_#{key}") || Participant.none
   end
 
+  def all?
+    key == 'all'
+  end
+
   def set_distance
-    @participants.pluck(:total_distance).compact.sum
+    all? ? @participants.pluck(:total_distance).compact.sum : @participants.last.total_distance
   end
 
   def set_points
-    pts = key == 'all' ? set_all_points : distance
+    pts = all? ? set_all_points : distance
     pts.floor(0)
   end
 

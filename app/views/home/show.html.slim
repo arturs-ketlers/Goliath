@@ -9,6 +9,7 @@
   .team
     - one = @team_one.participants.first || Participant.new
     - distance = one.total_distance
+    - points = @team_one.points
     .team__image-wrapper.team__image-wrapper--one
       .team__image
         - if one.avatar.present?
@@ -21,13 +22,15 @@
       div = "#{distance} #{unit}"
 
     .team__points
-      = format("%.0f", distance)
+      .team__points-num = format("%.0f", points)
+      .team__points-label = I18n.t('points', count: points)
 
   .team-seperator
 
   .team
     - all = @team_all.participants.order('total_distance desc').limit(3)
     - distance = @team_all.distance
+    - points = @team_all.points
     .team__image-wrapper.team__image-wrapper--all
       - if all.present?
         - all.each_with_index do |a, i|
@@ -49,4 +52,5 @@
       div = "#{@team_all.distance} #{unit}"
       div = I18n.t('participant', count: @team_all.participant_count)
     .team__points
-      = format("%.0f", @team_all.points)
+      .team__points-num = format("%.0f", points)
+      .team__points-label = I18n.t('points', count: points)

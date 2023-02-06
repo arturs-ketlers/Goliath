@@ -3,3 +3,6 @@ lv:
     one: '%{count} dalībnieks'
     other: '%{count} dalībnieki'
   rules: 'Nolikums'
+  points:
+    one: 'Punkts'
+    other: 'Punkti'

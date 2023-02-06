@@ -3,3 +3,6 @@ en:
     one: '%{count} participant'
     other: '%{count} participants'
   rules: 'Rules'
+  points:
+    one: 'Point'
+    other: 'Points'

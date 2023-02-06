@@ -144,6 +144,7 @@
     color: var(--secondary-text-clr);
     text-align: center;
     line-height: 1.5rem;
+    letter-spacing: 0.1em;
 
     @media (min-width: 600px) {
       height: 4rem;
@@ -152,8 +153,17 @@
 
 
   &__points {
-    @include fontClamp(3.5rem, 8rem);
-    // margin-block: 1rem;
     font-family: 'Lilita One', cursive;
+    text-align: center;
+    line-height: 1;
+  }
+  &__points-num {
+    @include fontClamp(3.5rem, 8rem);
+  }
+
+  &__points-label {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    @include fontClamp(1rem, 1.25rem);
   }
 }
