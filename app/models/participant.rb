@@ -13,9 +13,10 @@ class Participant < ApplicationRecord
   scope :team_one, (-> { where(team: 'one') })
   scope :team_all, (-> { where(team: 'all') })
 
-  before_save :set_total_distance
+  after_save :set_total_distance
 
   def set_total_distance
-    self.total_distance = Result.where(participant_id: id).pluck(:distance).compact.sum
+    distance = Result.where(participant_id: id).pluck(:distance).compact.sum
+    update_column(:total_distance, distance)
   end
 end

@@ -8,7 +8,7 @@
 .teams-wrapper
   .team
     - one = @team_one.participants.first || Participant.new
-    - distance = @team_one.distance
+    - distance = one.total_distance
     .team__image-wrapper.team__image-wrapper--one
       .team__image
         - if one.avatar.present?
@@ -21,7 +21,7 @@
       div = "#{distance} #{unit}"
 
     .team__points
-      = format("%.0f", @team_one.points)
+      = format("%.0f", distance)
 
   .team-seperator
 

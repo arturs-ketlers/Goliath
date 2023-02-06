@@ -16,7 +16,7 @@ class Team
   end
 
   def set_distance
-    Result.where(participant_id: participants.ids).pluck(:distance).sum
+    @participants.pluck(:total_distance).compact.sum
   end
 
   def set_points
@@ -27,7 +27,7 @@ class Team
   def set_all_points
     return 0 if participant_count.zero?
 
-    avg = distance / participant_count
+    avg = distance.to_f / participant_count
     points = avg * (1 + participant_count * 0.25)
     points
   end
