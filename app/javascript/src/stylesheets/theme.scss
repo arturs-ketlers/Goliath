@@ -6,6 +6,9 @@
     --secondary-text-clr: #444;
     --background: #F5F5F5;
 
+    --clr-1: #F46E71;
+    --clr-2: #F7B166;
+
     // Box
     --main-pad: 1.25rem;
     --block-pad: 1rem;
@@ -13,6 +16,9 @@
     --border-thickness: 1px;
     --border-color: rgba(0, 0, 0, 0.1);
     --wrapper-border-radius: 0.625rem;
+
+    // Treansition
+    --transition-timing-fn: cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @media(min-width: 600px) {

@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use 'sass:color';
+@use 'sass:string';
+
 @function _fontClamp($minFontSize, $maxFontSize, $minWidth: 25rem, $maxWidth: 80rem) {
   $slope: calc(($maxFontSize - $minFontSize) / ($maxWidth - $minWidth));
   $yAxis: -$minWidth * $slope + $minFontSize;

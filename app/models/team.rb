@@ -20,11 +20,13 @@ class Team
   end
 
   def set_distance
-    all? ? @participants.pluck(:total_distance).compact.sum : @participants.last.total_distance
+    all? ? @participants.pluck(:total_distance).compact.sum : @participants&.last&.total_distance
   end
 
   def set_points
     pts = all? ? set_all_points : distance
+    return 0 unless pts
+
     pts.floor(0)
   end
 

@@ -1,5 +1,7 @@
 @use "theme";
 
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -18,8 +20,6 @@ img { max-width: 100%; }
 
 
 main {
-  padding: var(--main-pad);
-  height: 100%;
   position: relative;
 }
 

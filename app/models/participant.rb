@@ -15,6 +15,10 @@ class Participant < ApplicationRecord
 
   after_save :set_total_distance
 
+  def to_s
+    name
+  end
+
   def set_total_distance
     distance = Result.where(participant_id: id).pluck(:distance).compact.sum
     update_column(:total_distance, distance)

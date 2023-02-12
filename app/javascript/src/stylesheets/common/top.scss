@@ -1,0 +1,80 @@
+@use "../variables" as *;
+
+section#top {
+  background-image: linear-gradient(13deg, var(--clr-1), var(--clr-2));
+}
+
+section#top .team {
+  width: fit-content;
+  min-width: min(20rem, 80vw);
+  margin-inline: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  margin-top: 1rem;
+  margin-top: calc(1rem + 1vh);
+
+  transition-duration: 300ms;
+  transition-timing-function: var(--transition-timing-fn);
+  transition-property: margin;
+
+  @media (min-width: 600px) {
+    margin-top: 2rem;
+    margin-top: calc(2rem + 1.5vh);
+    gap: 0.75rem;
+    min-width: min(45rem, 60vw);
+  }
+
+  &__participant-rank {
+    color: var(--secondary-text-clr);
+  }
+
+  &__participant {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    background-color: #fff;
+    padding-inline: 1rem;
+
+    border-radius: 1.5rem;
+    height: 3rem;
+
+    @media (min-width: 600px) {
+      gap: 1rem;
+      padding-inline: 1.5rem;
+      border-radius: 2rem;
+      height: 4rem;
+    }
+  }
+
+  &__participant-image {
+    flex-shrink: 0;
+    img {
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      @media (min-width: 600px) {
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+    }
+  }
+
+  &__participant-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include fontClamp(0.875rem, 1.25rem);
+  }
+
+  &__participant-distance {
+    font-weight: bold;
+    margin-left: auto;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+    @include fontClamp(0.875rem, 1.125rem);
+  }
+}

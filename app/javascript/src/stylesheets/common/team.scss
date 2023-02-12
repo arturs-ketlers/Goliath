@@ -1,61 +1,66 @@
 @use "../variables" as *;
 
-.teams-wrapper {
-  border: var(--border-thickness) solid var(--border-color);
-  border-radius: var(--wrapper-border-radius);
-
+section.score {
   display: grid;
-  grid-auto-rows: auto;
-  position: relative;
-  height: 100%;
-  justify-items: center;
-  align-items: center;
 
-  &-bg {
+  .teams-wrapper {
+    border: var(--border-thickness) solid var(--border-color);
+    border-radius: var(--wrapper-border-radius);
+
+    display: grid;
+    grid-auto-rows: auto;
+    position: relative;
+    height: 100%;
+    justify-items: center;
+    align-items: center;
+
+    &-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      height: 100%;
+      width: 100%;
+      user-select: none;
+      pointer-events: none;
+      overflow: hidden;
+      object-fit: cover;
+      filter: saturate(0.1) opacity(0.2);
+    }
+
+
+    @media (min-width: 600px) {
+      grid-template-columns: 1fr 1fr;
+      padding-bottom: 3rem;
+      padding-bottom: calc(3vw + 2vh);
+    }
+  }
+
+  .team-seperator {
     position: absolute;
-    inset: 0;
-    z-index: -1;
-    user-select: none;
-    pointer-events: none;
-    overflow: hidden;
-    height: 100%;
+
+    top: 50%;
+    left: 0;
     width: 100%;
-    object-fit: cover;
-    filter: saturate(0.1) opacity(0.2);
-  }
+    height: 0;
 
-  @media (min-width: 600px) {
-    grid-template-columns: 1fr 1fr;
-    padding-bottom: 3rem;
-    padding-bottom: calc(3vw + 2vh);
-  }
-}
+    border-width: 0;
+    border-top-width: var(--border-thickness);
+    border-style: solid;
+    border-color: var(--border-color);
 
-.team-seperator {
-  position: absolute;
+    @media (min-width: 600px) {
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 100%;
 
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 0;
-
-  border-width: 0;
-  border-top-width: var(--border-thickness);
-  border-style: solid;
-  border-color: var(--border-color);
-
-  @media (min-width: 600px) {
-    top: 0;
-    left: 50%;
-    width: 0;
-    height: 100%;
-
-    border-top-width: 0;
-    border-left-width: 1px;
+      border-top-width: 0;
+      border-left-width: 1px;
+    }
   }
 }
 
-.team {
+section.score .team {
   padding: var(--block-pad);
   display: flex;
   flex-direction: column;
@@ -79,8 +84,8 @@
     border-radius: 0.625rem;
     padding: 0.375rem 0.75rem;
 
-    background-color: var(--primary);
-    color: #fff;
+    background-color: var(--clr-2);
+    color: var(--text-clr);
     white-space: nowrap;
     @include fontClamp(0.6875rem, 0.875rem);
 
@@ -91,7 +96,7 @@
       height: 0;
       border-left: $size solid transparent;
       border-right: $size solid transparent;
-      border-top: $size solid var(--primary);
+      border-top: $size solid var(--clr-2);
       position: absolute;
       right: 16%;
       bottom: 0;
@@ -102,6 +107,41 @@
   }
 
   // Main image / Avatars
+  &__images {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+    color: var(--text-clr);
+
+    &:after {
+      opacity: 0;
+      content: attr(data-title);
+      position: absolute;
+      bottom: -0.5rem;
+      transform: translateY(0%);
+      color: inherit;
+      @include fontClamp(0.75rem, 0.875rem);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+
+      transition-duration: 300ms;
+      transition-timing-function: var(--transition-timing-fn);
+      transition-property: transform, opacity;
+    }
+
+    &:hover:after {
+      display: block;
+      opacity: 1;
+      transform: translateY(100%);
+    }
+
+    @media (min-width: 600px) {
+      gap: 0.5rem;
+    }
+  }
   &__image-wrapper {
     margin-bottom: 1rem;
 
@@ -117,9 +157,7 @@
     &--all {
       display: flex;
       align-items: center;
-      gap: 0 0.25rem ;
-      flex-wrap: nowrap;
-      justify-content: center;
+      color: var(--text-clr);
       .team__image { max-height: 5rem; }
     }
 
@@ -131,6 +169,9 @@
       &--all .team__image { max-height: 6rem; }
     }
   }
+
+
+
 
   &__name {
     @include fontClamp(1.25rem, 3rem);

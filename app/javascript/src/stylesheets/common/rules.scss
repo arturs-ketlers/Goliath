@@ -1,6 +1,6 @@
 .rules {
-  position: fixed;
-  top: 40%;
+  position: absolute;
+  top: 50%;
   left: var(--main-pad);
   transform: translate(-50%, -50%) rotate(-90deg);
   z-index: 2;

@@ -1,13 +1,12 @@
 footer {
   position: absolute;
   bottom: 0.125rem;
-  //
+
   width: 100%;
   text-align: center;
 
   font-size: 0.6875rem;
-  color: var(--secondary-text-clr);
-  opacity: 0.64;
+  color: var(--text-clr);
 
   @media (min-width: 600px) {
     width: auto;
