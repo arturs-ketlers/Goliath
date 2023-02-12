@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_03_113517) do
+ActiveRecord::Schema.define(version: 2023_02_12_131404) do
 
   create_table "admin_users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,12 +51,13 @@ ActiveRecord::Schema.define(version: 2023_02_03_113517) do
     t.decimal "total_distance", precision: 8, scale: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "last_result_date"
   end
 
   create_table "results", charset: "utf8", force: :cascade do |t|
     t.decimal "distance", precision: 8, scale: 3
     t.bigint "participant_id", null: false
-    t.date "datetime"
+    t.date "date"
     t.integer "steps"
     t.text "comment"
     t.index ["participant_id"], name: "index_results_on_participant_id"

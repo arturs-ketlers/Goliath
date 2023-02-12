@@ -14,13 +14,19 @@ class Participant < ApplicationRecord
   scope :team_all, (-> { where(team: 'all') })
 
   after_save :set_total_distance
+  after_save :set_last_result_date
 
   def to_s
     name
   end
 
   def set_total_distance
-    distance = Result.where(participant_id: id).pluck(:distance).compact.sum
+    distance = results.pluck(:distance).compact.sum
     update_column(:total_distance, distance)
+  end
+
+  def set_last_result_date
+    date = results.select(:date).order('date desc').first.date
+    update_column(:last_result_date, date)
   end
 end

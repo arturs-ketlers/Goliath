@@ -7,7 +7,7 @@ section.score
   .teams-wrapper
     .team
       - one = @team_one.participants.first || Participant.new
-      - distance = one.total_distance
+      - distance = @team_one.distance
       - points = @team_one.points
       .team__image-wrapper.team__image-wrapper--one
         .team__image
@@ -37,7 +37,7 @@ section.score
               .team__image
                 - if i.zero?
                   span.team__top-score
-                    = "#{format("%.2f", a.total_distance)} #{unit}"
+                    = "#{format("%.2f", a.total_distance.presence || 0)} #{unit}"
                 - if a.avatar.present?
                   = image_tag(a.avatar.url(:main))
                 - else

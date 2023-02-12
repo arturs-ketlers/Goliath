@@ -25,6 +25,8 @@ ActiveAdmin.register Participant do
     column :avatar do |r|
       if r.avatar.present?
         link_to(image_tag(r.avatar.url(:small_thumb), class: 'avatar'), r.avatar.url, target: '_blank')
+      else
+        image_pack_tag(r.avatar.url(:small_thumb), class: 'avatar')
       end
     end
     column :name

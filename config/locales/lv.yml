@@ -6,3 +6,58 @@ lv:
   points:
     one: 'Punkts'
     other: 'Punkti'
+  time:
+    formats:
+      long: '%A, %B %d, %Y'
+      short: '%b %d, %Y'
+      date: '%b %e'
+  date:
+    time:
+      formats:
+        long: '%A, %B %d, %Y'
+        short: '%b %d, %Y'
+        date: '%b %e'
+    abbr_day_names:
+    - Sv.
+    - P.
+    - O.
+    - T.
+    - C.
+    - Pk.
+    - S.
+    abbr_month_names:
+    -
+    - Janv.
+    - Febr.
+    - Marts
+    - Apr.
+    - Maijs
+    - Jūn.
+    - Jūl.
+    - Aug.
+    - Sept.
+    - Okt.
+    - Nov.
+    - Dec.
+    day_names:
+    - Svētdiena
+    - Pirmdiena
+    - Otrdiena
+    - Trešdiena
+    - Ceturtdiena
+    - Piektdiena
+    - Sestdiena
+    month_names:
+    -
+    - Janvāris
+    - Februāris
+    - Marts
+    - Aprīlis
+    - Maijs
+    - Jūnijs
+    - Jūlijs
+    - Augusts
+    - Septembris
+    - Oktobris
+    - Novembris
+    - Decembris

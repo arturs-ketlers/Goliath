@@ -13,4 +13,13 @@ ActiveAdmin.register Result do
     end
     f.actions
   end
+
+  index do
+    column :id
+    column :participant
+    column :steps
+    column :distance
+    column :datetime
+    actions
+  end
 end

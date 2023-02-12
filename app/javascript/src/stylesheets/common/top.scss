@@ -63,11 +63,26 @@ section#top .team {
     }
   }
 
+  &__participant-info {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
   &__participant-name {
+    @include fontClamp(0.875rem, 1.25rem);
+  }
+
+  &__participant-date {
+   color: var(--secondary-text-clr);
+   @include fontClamp(0.75rem, 0.875rem);
+  }
+
+  &__participant-name, &__participant-date {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    @include fontClamp(0.875rem, 1.25rem);
   }
 
   &__participant-distance {
