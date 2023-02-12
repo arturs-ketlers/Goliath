@@ -32,6 +32,7 @@ ActiveAdmin.register Participant do
     column :name
     column :team
     column :total_distance
+    column :last_result_date
     actions
   end
 end
