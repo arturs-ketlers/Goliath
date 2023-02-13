@@ -1,12 +1,12 @@
 ActiveAdmin.register Result do
   menu priority: 3
 
-  permit_params :participant_id, :datetime, :steps, :distance, :comment
+  permit_params :participant_id, :date, :steps, :distance, :comment
 
   form do |f|
     f.inputs do
       f.input :participant
-      f.input :datetime
+      f.input :date
       f.input :steps
       f.input :distance
       f.input :comment
@@ -19,7 +19,7 @@ ActiveAdmin.register Result do
     column :participant
     column :steps
     column :distance
-    column :datetime
+    column :date
     actions
   end
 end
