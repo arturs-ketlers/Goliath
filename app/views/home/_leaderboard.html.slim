@@ -22,7 +22,7 @@ section#leaderboard
 
         .team__participant-distance-wrapper
           - data = pt.steps_per_day
-          .team__participant-distance = "#{format("%.2f", distance)} #{unit}"
+          .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
           .team__participant-steps title="#{data[:days]} dienas"
             - steps = number_with_delimiter(format("%.0f", data[:steps]), delimiter: ' ')
             = "#{steps} soļi/dienā"
