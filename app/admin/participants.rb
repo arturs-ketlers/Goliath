@@ -35,4 +35,19 @@ ActiveAdmin.register Participant do
     column :last_result_date
     actions
   end
+
+  show title: :name do |a|
+    attributes_table do
+      row :avatar do |r|
+        if r.avatar.present?
+          link_to(image_tag(r.avatar.url(:main), class: 'avatar avatar--lg'), r.avatar.url, target: '_blank')
+        else
+          image_pack_tag(r.avatar.url(:main), class: 'avatar avatar--lg')
+        end
+      end
+      row :team
+      row :total_distance
+      row :last_result_date
+    end
+  end
 end

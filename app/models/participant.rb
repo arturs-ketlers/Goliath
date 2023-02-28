@@ -13,20 +13,30 @@ class Participant < ApplicationRecord
   scope :team_one, (-> { where(team: 'one') })
   scope :team_all, (-> { where(team: 'all') })
 
-  after_save :set_total_distance
-  after_save :set_last_result_date
+  after_save :set_stats
+  after_touch :set_stats
 
   def to_s
     name
   end
 
-  def set_total_distance
-    distance = results.pluck(:distance).compact.sum
-    update_column(:total_distance, distance)
+  def set_stats
+    update_columns(
+      total_distance: results.pluck(:distance).compact.sum,
+      last_result_date: results.select(:date).order('date desc').first.date
+    )
   end
 
-  def set_last_result_date
-    date = results.select(:date).order('date desc').first.date
-    update_column(:last_result_date, date)
+  def steps_per_day
+    steps = results.pluck(:distance).compact.sum / 0.7 * 1000
+    days = results.pluck(:date).uniq.count
+
+    # Round to closest n steps
+    round_by = 10
+
+    {
+      steps: (steps / days / round_by).round(0) * round_by,
+      days: days
+    }
   end
 end
