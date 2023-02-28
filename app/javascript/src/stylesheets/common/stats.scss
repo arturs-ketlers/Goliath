@@ -1,0 +1,41 @@
+@use "../variables" as *;
+
+section#stats {
+  background-image: radial-gradient(circle at bottom, var(--clr-2) 8%, #fff 50%);
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-inline: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 60vh;
+
+    gap: calc(2rem + 2vh);
+    text-align: center;
+
+    &__participants, &__distance, &__steps {
+      @include fontClamp(1.75rem, 4rem);
+    }
+
+    &__distance {
+      // font-weight: bold
+    }
+    &__total {
+      display: flex;
+      gap: 0.25em;
+      align-items: flex-end;
+
+      span.count {
+        font-family: 'Lilita One', cursive;
+        font-size: 1.25em;
+      }
+    }
+
+    &__avg {
+      margin-top: 0.25em;
+      @include fontClamp(0.875rem, 1.875rem);
+    }
+  }
+}

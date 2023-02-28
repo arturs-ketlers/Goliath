@@ -18,7 +18,7 @@ section.score
       .team__name
         = one.name
       .team__info
-        div = "#{format("%.2f", distance)} #{unit}"
+        div = "#{format("%.1f", distance)} #{unit}"
 
       .team__points
         .team__points-num = format("%.0f", points)
@@ -31,13 +31,13 @@ section.score
       - distance = @team_all.distance
       - points = @team_all.points
       .team__image-wrapper.team__image-wrapper--all
-        a.team__images href="#top" data-title='Skatīt rezultātus'
+        a.team__images href="#leaderboard" data-title='Skatīt rezultātus'
           - if all.present?
             - all.each_with_index do |a, i|
               .team__image
                 - if i.zero?
                   span.team__top-score
-                    = "#{format("%.2f", a.total_distance.presence || 0)} #{unit}"
+                    = "#{format("%.1f", a.total_distance.presence || 0)} #{unit}"
                 - if a.avatar.present?
                   = image_tag(a.avatar.url(:main))
                 - else

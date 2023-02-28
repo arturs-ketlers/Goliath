@@ -1,10 +1,10 @@
 @use "../variables" as *;
 
-section#top {
+section#leaderboard {
   background-image: linear-gradient(13deg, var(--clr-1), var(--clr-2));
 }
 
-section#top .team {
+section#leaderboard .team {
   width: fit-content;
   min-width: min(20rem, 80vw);
   margin-inline: auto;
@@ -63,20 +63,20 @@ section#top .team {
     }
   }
 
-  &__participant-info {
+  &__participant-info, &__participant-distance-wrapper {
     overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
   }
 
-  &__participant-name {
+  &__participant-name, &__participant-distance {
     @include fontClamp(0.875rem, 1.25rem);
   }
 
   &__participant-date {
-   color: var(--secondary-text-clr);
-   @include fontClamp(0.75rem, 0.875rem);
+    color: var(--secondary-text-clr);
+    @include fontClamp(0.75rem, 0.875rem);
   }
 
   &__participant-name, &__participant-date {
@@ -85,11 +85,19 @@ section#top .team {
     white-space: nowrap;
   }
 
-  &__participant-distance {
-    font-weight: bold;
+  &__participant-distance-wrapper {
     margin-left: auto;
     flex-shrink: 0;
+    align-items: flex-end;
+  }
+
+  &__participant-distance {
+    font-weight: bold;
     letter-spacing: 0.05em;
-    @include fontClamp(0.875rem, 1.125rem);
+  }
+
+  &__participant-steps {
+    color: var(--secondary-text-clr);
+    @include fontClamp(0.75rem, 0.8125rem);
   }
 }

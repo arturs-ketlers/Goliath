@@ -1,6 +1,5 @@
 - unit = Setting.uncached_value_for('unit')
-
-section#top
+section#leaderboard
   .section-title = 'TOPS'
 
   .team
@@ -20,5 +19,10 @@ section#top
         .team__participant-info
           .team__participant-name = pt.to_s
           .team__participant-date = l(pt.last_result_date, format: :date, default: '')
-        .team__participant-distance
-          = "#{format("%.2f", distance)} #{unit}"
+
+        .team__participant-distance-wrapper
+          - data = pt.steps_per_day
+          .team__participant-distance = "#{format("%.2f", distance)} #{unit}"
+          .team__participant-steps title="#{data[:days]} dienas"
+            - steps = number_with_delimiter(format("%.0f", data[:steps]), delimiter: ' ')
+            = "#{steps} soļi/dienā"

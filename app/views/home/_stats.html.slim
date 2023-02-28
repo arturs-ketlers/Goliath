@@ -1,0 +1,23 @@
+- unit = Setting.uncached_value_for('unit')
+- @totals ||= {}
+- distance = number_with_delimiter(format("%.1f", @totals[:distance]), delimiter: ' ', separator: '.')
+- distance_avg = number_with_delimiter(format("%.1f", @totals[:distance_avg]), delimiter: ' ', separator: '.')
+
+- steps = number_with_delimiter(format("%.0f", @totals[:steps]), delimiter: ' ')
+- steps_avg = number_with_delimiter(format("%.0f", @totals[:steps_avg]), delimiter: ' ')
+section#stats
+  .section-title = 'DATI'
+
+  .stats
+    .stats__participants
+      = I18n.t('participant', count: @participants_count)
+    .stats__distance
+      .stats__total
+        span.count = distance
+        span = unit
+      .stats__avg = "#{distance_avg} #{unit} / dienā"
+    .stats__steps
+      .stats__total
+        span.count = steps
+        span = "soļi"
+      .stats__avg = "#{steps_avg} soļi / dienā"

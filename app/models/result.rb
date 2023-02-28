@@ -11,13 +11,16 @@ class Result < ApplicationRecord
   def self.totals
     distance = pluck(:distance).compact.sum
     steps = distance / 0.7 * 1000
+    days = 28
 
     # Round to closest n steps
     round_by = 10
 
     {
-      distance: distance.round(2),
+      distance: distance.round(1),
+      distance_avg: (distance / days).round(1),
       steps: (steps / round_by).round(0) * round_by,
+      steps_avg: (steps / days / round_by).round(0) * round_by
     }
   end
 end
