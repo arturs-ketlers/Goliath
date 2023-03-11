@@ -12,6 +12,7 @@ class Participant < ApplicationRecord
 
   scope :team_one, (-> { where(team: 'one') })
   scope :team_all, (-> { where(team: 'all') })
+  scope :with_results, (-> { joins(:results).distinct })
 
   after_save :set_stats
   after_touch :set_stats
@@ -21,6 +22,8 @@ class Participant < ApplicationRecord
   end
 
   def set_stats
+    return if results.blank?
+
     update_columns(
       total_distance: results.pluck(:distance).compact.sum,
       last_result_date: results.select(:date).order('date desc').first.date

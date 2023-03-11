@@ -12,7 +12,7 @@ class Team
   end
 
   def set_participants
-    Participant.try(:"team_#{key}") || Participant.none
+    Participant.try(:"team_#{key}")&.with_results || Participant.none
   end
 
   def all?
