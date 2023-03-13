@@ -18,6 +18,8 @@ gem 'sassc'
 gem 'slim'
 gem "slim-rails"
 
+gem 'simple_form'
+
 # Attachments
 gem 'paperclip', '6.1.0'
 

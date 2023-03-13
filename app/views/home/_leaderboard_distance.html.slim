@@ -1,15 +1,12 @@
 - unit = Setting.uncached_value_for('unit')
-section#leaderboard.bg--1
+section#leaderboard.bg--distance
   .section-title = 'TOPS'
 
   .team
-    - max = 1
     - @team_all.participants.order('total_distance desc').each_with_index do |pt, i|
       - distance = pt.total_distance.presence || 0
       .team__participant
         .team__participant-rank
-          / - if i.zero?
-            = 'CR'
           span = i + 1
         .team__participant-image
           - if pt.avatar.present?
@@ -18,11 +15,5 @@ section#leaderboard.bg--1
             = image_pack_tag(pt.avatar.url(:small_thumb), loading: "lazy")
         .team__participant-info
           .team__participant-name = pt.to_s
-          / .team__participant-date = l(pt&.last_result_date, format: :date, default: '')
 
-        .team__participant-distance-wrapper
-          - data = pt.steps_per_day
-          .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
-          .team__participant-steps title="#{data[:days]} dienas"
-            - steps = number_with_delimiter(format("%.0f", data[:steps]), delimiter: ' ')
-            = "#{steps} soļi/dienā"
+        .team__participant-distance = "#{format("%.1f", distance)} #{unit}"

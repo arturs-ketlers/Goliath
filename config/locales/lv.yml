@@ -61,3 +61,7 @@ lv:
     - Oktobris
     - Novembris
     - Decembris
+  event:
+    types:
+      goliath: "Goliāts: One vs All"
+      target: "Mērķis"

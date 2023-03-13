@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
   def show
-    @team_one = Team.new('one')
-    @team_all = Team.new('all')
+    @event = Event.active
+    @team_one = Team.new('one', event_id: @event.id)
+    @team_all = Team.new('all', event_id: @event.id)
 
-    @totals = Result.totals
-    @participants_count = Participant.joins(:results).distinct.count
+    @totals = @event.totals
+    @participants_count = @event.participants.with_results.count
   end
 end

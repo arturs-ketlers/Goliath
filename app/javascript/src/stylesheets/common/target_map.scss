@@ -1,0 +1,44 @@
+@use "../variables" as *;
+
+section#map {
+  display: grid;
+  place-items: center;
+
+  .map-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .current-distance {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: 'Lilita One', cursive;
+    text-align: center;
+    line-height: 1;
+    @include fontClamp(2rem, 6rem);
+  }
+}
+
+.path-wrapper {
+  max-height: 90vh;
+  margin-inline: auto;
+}
+
+.path {
+  stroke: #ddd;
+  stroke-width: 2;
+}
+
+.current-path {
+  stroke: #333;
+  stroke-linecap: round;
+  stroke-dasharray: 842;
+  stroke-width: 2;
+  transition: all 5s ease-in-out;
+}

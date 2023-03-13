@@ -1,13 +1,12 @@
 ActiveAdmin.register Participant do
-  menu priority: 2
+  menu priority: 3
 
-  permit_params :name, :team, :avatar
+  permit_params :name, :height, :avatar
 
   form do |f|
     f.inputs do
       f.input :name
-      f.input :team, collection: %w[all one], include_blank: false,
-                     selected: f.object.team.presence || 'all'
+      f.input :height
       f.input :avatar,
         hint: (if f.object.avatar.present?
                  f.image_tag(f.object.avatar.url(:small_thumb))
@@ -30,9 +29,10 @@ ActiveAdmin.register Participant do
       end
     end
     column :name
-    column :team
-    column :total_distance
-    column :last_result_date
+    column :height
+    column :step_length do |r|
+      format('%.3f', r.step_length)
+    end
     actions
   end
 
@@ -45,9 +45,10 @@ ActiveAdmin.register Participant do
           image_pack_tag(r.avatar.url(:main), class: 'avatar avatar--lg')
         end
       end
-      row :team
-      row :total_distance
-      row :last_result_date
+      row :height
+      row :step_length do |r|
+        format('%.3f', r.step_length)
+      end
     end
   end
 end

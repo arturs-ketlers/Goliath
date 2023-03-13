@@ -3,7 +3,8 @@ class Team
 
   attr_accessor :key, :participants, :participant_count, :distance, :points
 
-  def initialize(key)
+  def initialize(key, options = {})
+    @event = Event.find_by(id: options[:event_id])
     @key = key
     @participants = set_participants
     @participant_count = @participants.count
@@ -12,7 +13,7 @@ class Team
   end
 
   def set_participants
-    Participant.try(:"team_#{key}")&.with_results || Participant.none
+    @event.participants.try(:"team_#{key}")&.with_results
   end
 
   def all?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_12_131404) do
+ActiveRecord::Schema.define(version: 2023_03_11_130918) do
 
   create_table "admin_users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,6 +41,27 @@ ActiveRecord::Schema.define(version: 2023_02_12_131404) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
+  create_table "event_participants", charset: "utf8", force: :cascade do |t|
+    t.bigint "participant_id"
+    t.bigint "event_id"
+    t.string "team"
+    t.decimal "total_distance", precision: 8, scale: 3
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_participants_on_event_id"
+    t.index ["participant_id"], name: "index_event_participants_on_participant_id"
+  end
+
+  create_table "events", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "event_type"
+    t.date "date_from"
+    t.date "date_till"
+    t.boolean "is_active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "participants", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.string "team"
@@ -52,15 +73,16 @@ ActiveRecord::Schema.define(version: 2023_02_12_131404) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "last_result_date"
+    t.decimal "height", precision: 4, scale: 2
   end
 
   create_table "results", charset: "utf8", force: :cascade do |t|
     t.decimal "distance", precision: 8, scale: 3
-    t.bigint "participant_id", null: false
+    t.bigint "event_participant_id", null: false
     t.date "date"
     t.integer "steps"
     t.text "comment"
-    t.index ["participant_id"], name: "index_results_on_participant_id"
+    t.index ["event_participant_id"], name: "index_results_on_event_participant_id"
   end
 
   create_table "settings", charset: "utf8", force: :cascade do |t|
@@ -89,5 +111,5 @@ ActiveRecord::Schema.define(version: 2023_02_12_131404) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "results", "participants"
+  add_foreign_key "results", "participants", column: "event_participant_id"
 end

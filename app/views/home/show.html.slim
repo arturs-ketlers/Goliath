@@ -1,3 +1,8 @@
-= render 'teams'
-= render 'leaderboard'
-= render 'stats'
+- case @event&.event_type
+- when 'goliath'
+  = render 'teams'
+  = render 'leaderboard'
+  = render 'stats'
+- when 'target'
+  = render 'target_route'
+  = render 'leaderboard_distance'

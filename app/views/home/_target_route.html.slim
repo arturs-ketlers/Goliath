@@ -1,0 +1,9 @@
+- unit = Setting.uncached_value_for('unit')
+- target = 1732
+- current = @event&.total_distance || 0
+
+section#map
+  .map-wrapper
+    .current-distance
+      = "#{format("%.1f", current)} #{unit}"
+    = render "common/target/lt", target: current / target

@@ -1,11 +1,11 @@
 ActiveAdmin.register Result do
-  menu priority: 3
+  menu priority: 5
 
-  permit_params :participant_id, :date, :steps, :distance, :comment
+  permit_params :event_participant_id, :date, :steps, :distance, :comment
 
   form do |f|
     f.inputs do
-      f.input :participant
+      f.input :event_participant
       f.input :date
       f.input :steps
       f.input :distance
@@ -16,7 +16,7 @@ ActiveAdmin.register Result do
 
   index do
     column :id
-    column :participant
+    column :event_participant
     column :steps
     column :distance
     column :date
