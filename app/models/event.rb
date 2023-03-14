@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   end
 
   def totals
-    distance = 100 # pluck(:distance).compact.sum
+    distance = participants.pluck(:total_distance)
     steps = distance / 0.7 * 1000
     days = 28
 

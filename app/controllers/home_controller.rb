@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     @team_one = Team.new('one', event_id: @event.id)
     @team_all = Team.new('all', event_id: @event.id)
 
-    @totals = @event.totals
+    @totals = @event.totals if @event.event_type == 'goliath'
     @participants_count = @event.participants.with_results.count
   end
 end
