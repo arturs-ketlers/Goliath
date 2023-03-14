@@ -14,6 +14,6 @@ class Participant < ApplicationRecord
   end
 
   def step_length
-    height ? (height * 0.403).round(3) : 0.700
+    height ? (height * 0.430).round(3) : 0.700
   end
 end
