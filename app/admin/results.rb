@@ -5,8 +5,8 @@ ActiveAdmin.register Result do
 
   form do |f|
     f.inputs do
-      f.input :event_participant
-      f.input :date
+      f.input :event_participant, collection: Event.active.participants
+      f.input :date, as: :string, input_html: { class: "datepicker" }
       f.input :steps
       f.input :distance
       f.input :comment
