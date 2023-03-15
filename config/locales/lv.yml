@@ -12,6 +12,8 @@ lv:
       short: '%b %d, %Y'
       date: '%b %e'
   date:
+    formats:
+      date: '%e. %b'
     time:
       formats:
         long: '%A, %B %d, %Y'

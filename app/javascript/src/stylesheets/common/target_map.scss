@@ -1,8 +1,10 @@
 @use "../variables" as *;
 
 section#map {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
 
   .map-wrapper {
     position: relative;
@@ -26,7 +28,7 @@ section#map {
 }
 
 .path-wrapper {
-  max-height: 90vh;
+  max-height: 80vh;
   margin-inline: auto;
 }
 
@@ -36,7 +38,7 @@ section#map {
 }
 
 .current-path {
-  stroke: #333;
+  stroke: var(--clr-1);
   stroke-linecap: round;
   stroke-dasharray: 842;
   stroke-width: 2;
