@@ -5,42 +5,73 @@ section#map {
   flex-direction: column;
   gap: 0.5rem;
   justify-content: center;
+}
 
-  .map-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
+section#map .map {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 
-  .current-distance {
+  &__title-wrapper {
     position: absolute;
-    top: 40%;
+    top: 36%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
 
+  &__title {
     font-family: 'Lilita One', cursive;
     text-align: center;
     line-height: 1;
     @include fontClamp(2rem, 6rem);
   }
+
+  &__subtitle {
+    text-align: right;
+    @include fontClamp(0.875rem, 1.25rem);
+  }
+
+  &__markers {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__pin {
+    position: absolute;
+    font-size: clamp(0.125rem, 0.125rem + 2vw, 0.5rem);
+    border-radius: 50% 50% 50% 0;
+    border: 1em solid;
+    width: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+    height: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+    transform: translate(-50%, -100%) rotate(-45deg);
+  }
 }
+
 
 .path-wrapper {
   max-height: 80vh;
   margin-inline: auto;
+  display: block;
 }
 
 .path {
   stroke: #ddd;
   stroke-width: 4;
-}
-
-.current-path {
-  stroke: var(--clr-1);
+  stroke-opacity: 1;
   stroke-linecap: round;
-  stroke-dasharray: 842;
-  stroke-width: 2;
-  transition: all 5s ease-in-out;
+  stroke-linejoin: round;
+
+  &--current {
+    stroke-opacity: 0.86;
+    stroke: var(--clr-1);
+    stroke-dasharray: 844;
+    stroke-width: 2;
+    // transition: all 4500ms ease-in-out 300ms;
+  }
+
+  &--target {
+    fill-opacity: 0;
+  }
 }

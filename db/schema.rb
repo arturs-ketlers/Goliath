@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_14_072849) do
+ActiveRecord::Schema.define(version: 2023_03_18_153023) do
 
   create_table "admin_users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2023_03_14_072849) do
     t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "target_type"
+    t.decimal "target", precision: 8, scale: 3
   end
 
   create_table "participants", charset: "utf8", force: :cascade do |t|
@@ -110,4 +112,5 @@ ActiveRecord::Schema.define(version: 2023_03_14_072849) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
 end

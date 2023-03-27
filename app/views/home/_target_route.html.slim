@@ -1,6 +1,7 @@
 - unit = Setting.uncached_value_for('unit')
-- target = 1732
+- target = @event&.target || 1
 - current = @event&.total_distance || 0
+- target_today = @event&.target_today
 
 section#map
   .event
@@ -9,7 +10,10 @@ section#map
     .event__date
       = [l(@event&.date_from, format: :date, default: nil), l(@event&.date_till, format: :date, default: nil)].compact.join(' - ').downcase
 
-  .map-wrapper
-    .current-distance
-      = "#{format("%.1f", current)} #{unit}"
-    = render "common/target/lt", target: current / target
+  .map
+    .map__title-wrapper
+      .map__title
+        = "#{format("%.1f", current)} #{unit}"
+      .map__subtitle
+        = "#{t("target.from")} #{format("%.1f", target)} #{unit}"
+    = render "common/target/lt", current: (current / target).round(4), target_today: (target_today / target).round(4)

@@ -6,6 +6,8 @@ lv:
   points:
     one: 'Punkts'
     other: 'Punkti'
+  target:
+    from: 'no'
   time:
     formats:
       long: '%A, %B %d, %Y'
@@ -67,3 +69,6 @@ lv:
     types:
       goliath: "Goliāts: One vs All"
       target: "Mērķis"
+    target_types:
+      distance: 'Distance'
+      steps: 'Soļi'

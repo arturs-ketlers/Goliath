@@ -2,18 +2,8 @@
 
 #leaderboard {
   &.bg--1 { background-image: linear-gradient(13deg, var(--clr-1), var(--clr-2)); }
-  &.bg--distance {
-    background-image: linear-gradient(69deg, var(--clr-3) 42%, var(--clr-4) 58%);
-    background-size: 400% 400%;
-    animation: bgPossitionChange 26s ease infinite;
-  }
 }
 
-@keyframes bgPossitionChange {
-  0%{ background-position: 0% 50%; }
-  50%{ background-position: 100% 50%; }
-  100%{ background-position: 0% 50%; }
-}
 
 section#leaderboard .team {
   width: fit-content;
@@ -74,10 +64,19 @@ section#leaderboard .team {
     }
   }
 
-  &__participant-info, &__participant-distance-wrapper {
-    overflow: hidden;
+  &__participant-info-wrapper {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  &__participant-info {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
     gap: 0.25rem;
   }
 
@@ -96,11 +95,11 @@ section#leaderboard .team {
     white-space: nowrap;
   }
 
-  &__participant-distance-wrapper {
-    margin-left: auto;
-    flex-shrink: 0;
-    align-items: flex-end;
-  }
+  // &__participant-distance-wrapper {
+  //   margin-left: auto;
+  //   flex-shrink: 0;
+  //   align-items: flex-end;
+  // }
 
   &__participant-distance {
     margin-left: auto;
@@ -111,5 +110,12 @@ section#leaderboard .team {
   &__participant-steps {
     color: var(--secondary-text-clr);
     @include fontClamp(0.75rem, 0.8125rem);
+  }
+
+  &__participant-distance-percentage {
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    min-width: 0.5rem;
+    background-image: linear-gradient(13deg, var(--clr-2), var(--clr-1));
   }
 }

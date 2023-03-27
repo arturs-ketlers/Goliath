@@ -1,28 +1,26 @@
 - unit = Setting.uncached_value_for('unit')
-section#leaderboard.bg--1
+section#leaderboard
   .section-title = 'TOPS'
 
   .team
     - max = 1
-    - @team_all.participants.order('total_distance desc').each_with_index do |pt, i|
+    - participants = @team_all.participants.order('total_distance desc')
+    - max_distance = participants.first.total_distance
+
+    - participants.each_with_index do |pt, i|
       - distance = pt.total_distance.presence || 0
       .team__participant
         .team__participant-rank
-          / - if i.zero?
-            = 'CR'
           span = i + 1
         .team__participant-image
           - if pt.avatar.present?
             = image_tag(pt.avatar.url(:small_thumb), loading: "lazy")
           - else
             = image_pack_tag(pt.avatar.url(:small_thumb), loading: "lazy")
-        .team__participant-info
-          .team__participant-name = pt.to_s
-          / .team__participant-date = l(pt&.last_result_date, format: :date, default: '')
 
-        .team__participant-distance-wrapper
-          - data = pt.steps_per_day
-          .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
-          .team__participant-steps title="#{data[:days]} dienas"
-            - steps = number_with_delimiter(format("%.0f", data[:steps]), delimiter: ' ')
-            = "#{steps} soļi/dienā"
+        .team__participant-info-wrapper
+          .team__participant-info
+            .team__participant-name = pt.to_s
+            .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
+
+          .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(0)}%"]
