@@ -16,7 +16,7 @@ onload = (event) => {
 
     // 60 fps;
     currentPath.step = 0;
-    currentPath.max_steps = (5000 / 60);
+    currentPath.max_steps = (15000 / 60);
 
     let max = currentPath.getTotalLength(),
         target = max * currentOffsetKoef;
