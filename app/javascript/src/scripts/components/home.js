@@ -18,12 +18,11 @@ onload = (event) => {
     currentPath.step = 0;
     currentPath.max_steps = (15000 / 60);
 
-    let max = currentPath.getTotalLength(),
-        target = max * currentOffsetKoef;
-    currentPath.style.strokeDasharray = max;
+    if (currentOffsetKoef > 1) currentOffsetKoef = 1;
+    let target = currentPath.total_length * currentOffsetKoef;
 
     currentPath.interval = setInterval(function(){
-      move(currentPath, target, max);
+      move(currentPath, target);
     }, 1000 / 60);
   }
 }
@@ -31,6 +30,10 @@ onload = (event) => {
 drawPath = (parent, path, name) => {
   let currentPath = path.cloneNode(),
       mapWrapper = document.querySelector('section#map .map');
+
+  currentPath.total_length = currentPath.getTotalLength();
+  currentPath.style.strokeDasharray = currentPath.total_length;
+  currentPath.style.strokeDashoffset = currentPath.total_length;
 
   parent.appendChild(currentPath);
   currentPath.classList.add(`path--${name}`);
@@ -46,7 +49,7 @@ easeInOutSine = (x) => {
   return -(Math.cos(Math.PI * x) - 1) / 2;
 };
 
-move = (path, target, max) => {
+move = (path, target) => {
   // duration 5s, 60 fps
   let easeProgress = easeInOutSine(path.step / path.max_steps);
 
@@ -55,11 +58,11 @@ move = (path, target, max) => {
     path.style.strokeDashoffset = target;
   }
 
-  let offset = max - (easeProgress * target);
+  let offset = path.total_length - (easeProgress * target);
   path.style.strokeDashoffset = offset;
 
 
-  // console.log(target, ' | ', max, ' | ', offset);
+  // console.log(target, ' | ', path.total_length, ' | ', offset);
 
   // TODO: CHECK:
   // https://stackoverflow.com/questions/22633718/get-points-y-coordinate-on-svg-path
