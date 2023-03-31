@@ -25,7 +25,7 @@ section#leaderboard
             .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
 
           .team__participant-distance-percentage-wrapper
-            .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(0)}%"]
+            .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]
 
         .team__participant-total-percentage
           - dist_percentage_of_total = (distance / total_distance) * 100
