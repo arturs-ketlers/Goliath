@@ -6,9 +6,11 @@ section.score-mini
 
   - one = @team_one.participants.first
   - all = @team_all.participants.order('total_distance desc').first
+
   - team_one = { distance: @team_one.distance, points: @team_one.points }
   - team_all = { distance: @team_all.distance, points: @team_all.points }
   - total_points = team_one[:points] + team_all[:points]
+  - total_points = 1 if total_points.to_i.zero?
 
   .teams-wrapper
     .team
@@ -22,7 +24,7 @@ section.score-mini
         .team__name
           = one&.name || 'name'
         .team__info
-          = "#{format("%.1f", team_one[:distance])} #{unit}"
+          = "#{format("%.2f", team_one[:distance])} #{unit}"
 
     .team.team--all
       .team__info-wrapper.text-right
@@ -32,7 +34,7 @@ section.score-mini
           = "#{format("%.2f", team_all[:distance])} #{unit}, #{I18n.t('participant', count: @team_all.participant_count)}"
       .team__image
         span.team__top-score
-          = "#{format("%.1f", all.total_distance.presence || 0)} #{unit}"
+          = "#{format("%.1f", all&.total_distance&.presence || 0)} #{unit}"
         - if all&.avatar.present?
           = image_tag(all.avatar.url(:main))
         - else
