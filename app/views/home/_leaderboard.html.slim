@@ -5,7 +5,7 @@ section#leaderboard
 
   .team
     - max = 1
-    - participants = @team_all.participants.order('total_distance desc')
+    - participants = @event.participants.order('total_distance desc')
     - max_distance = participants.first.total_distance
 
     - participants.each_with_index do |pt, i|

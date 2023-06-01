@@ -1,6 +1,7 @@
 @use "../variables" as *;
 
 section#stats {
+  min-height: 100vh;
   background-image: radial-gradient(circle at bottom, var(--clr-2) 8%, #fff 50%);
 
   .stats {
@@ -28,7 +29,7 @@ section#stats {
       align-items: flex-end;
 
       span.count {
-        font-family: 'Lilita One', cursive;
+        font-family: 'Russo One', cursive;
         font-size: 1.25em;
       }
     }

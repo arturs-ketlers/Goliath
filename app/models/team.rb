@@ -28,17 +28,22 @@ class Team
   end
 
   def set_points
-    pt = all? ? set_all_points : distance
+    pt = all? ? distance : set_one_points
     return 0 unless pt
 
     pt.floor(0)
   end
 
   def set_all_points
+    # Goliath v1
     return 0 if participant_count.zero?
 
     avg = distance.to_f / participant_count
     points = avg * (1 + participant_count * 0.25)
     points
+  end
+
+  def set_one_points
+    distance.to_f * 4
   end
 end

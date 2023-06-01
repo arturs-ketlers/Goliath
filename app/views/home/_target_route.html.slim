@@ -16,4 +16,4 @@ section#map
         = "#{format("%.1f", current)} #{unit}"
       .map__subtitle
         = "#{t("target.from")} #{format("%.1f", target)} #{unit}"
-    = render "common/target/lt", current: (current / target).round(4), target_today: (target_today / target).round(4)
+    = render "common/target/pl", current: (current / target).round(4), target_today: (target_today / target).round(4)

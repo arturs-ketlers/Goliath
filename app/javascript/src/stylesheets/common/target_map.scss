@@ -1,6 +1,7 @@
 @use "../variables" as *;
 
 section#map {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -16,16 +17,16 @@ section#map .map {
 
   &__title-wrapper {
     position: absolute;
-    top: 36%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
   &__title {
-    font-family: 'Lilita One', cursive;
+    font-family: 'Russo One', cursive;
     text-align: center;
     line-height: 1;
-    @include fontClamp(2rem, 6rem);
+    @include fontClamp(2rem, 5rem);
   }
 
   &__subtitle {
@@ -58,18 +59,31 @@ section#map .map {
 
 .path {
   stroke: #ddd;
-  stroke-width: 4;
   stroke-opacity: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
 
-  &--current {
-    stroke-opacity: 0.86;
-    stroke: var(--clr-1);
-    stroke-dasharray: 844;
-    stroke-width: 2;
-    // transition: all 4500ms ease-in-out 300ms;
+  &--current { stroke-opacity: 0.86; }
+
+  &--lt {
+    stroke-width: 4;
+    &.path--current {
+      stroke: var(--clr-1);
+      stroke-dasharray: 844;
+      stroke-width: 2;
+    }
   }
+
+  &--pl {
+    stroke-width: 10;
+    &.path--current {
+      stroke: var(--clr-1);
+      stroke-dasharray: 844;
+      stroke-width: 5;
+    }
+  }
+
+
 
   &--target {
     fill-opacity: 0;

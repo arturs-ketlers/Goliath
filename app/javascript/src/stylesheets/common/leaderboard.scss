@@ -1,6 +1,7 @@
 @use "../variables" as *;
 
-#leaderboard {
+section#leaderboard {
+  min-height: 60vh;
   &.bg--1 { background-image: linear-gradient(13deg, var(--clr-1), var(--clr-2)); }
 }
 

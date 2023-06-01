@@ -2,15 +2,14 @@
 
 section {
   position: relative;
-  min-height: 100vh;
   padding: var(--main-pad);
 }
 
 .section-title {
-  font-family: 'Lilita One', cursive;
+  font-family: 'Russo One', cursive;
   line-height: 1;
   text-align: center;
 
-  margin-block: calc(2rem + 1vh) calc(1rem + 0.5vh);
-  @include fontClamp(2rem, 6rem);
+  margin-block: calc(2.5rem + 2vh) calc(1rem + 0.5vh);
+  @include fontClamp(2rem, 5rem);
 }

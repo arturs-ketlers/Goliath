@@ -1,0 +1,55 @@
+- unit = Setting.uncached_value_for('unit')
+- team_name = Setting.uncached_value_for('team_name')
+
+section.score-mini
+  .section-title = 'Goliāts II: Revanšs'
+
+  - one = @team_one.participants.first
+  - all = @team_all.participants.order('total_distance desc').first
+  - team_one = { distance: @team_one.distance, points: @team_one.points }
+  - team_all = { distance: @team_all.distance, points: @team_all.points }
+  - total_points = team_one[:points] + team_all[:points]
+
+  .teams-wrapper
+    .team
+      .team__image
+        span.team__points-koeficient = "x4"
+        - if one&.avatar.present?
+          = image_tag(one.avatar.url(:main))
+        - else
+          = image_pack_tag one&.avatar(:main) || 'missing/participant.png'
+      .team__info-wrapper
+        .team__name
+          = one&.name || 'name'
+        .team__info
+          = "#{format("%.1f", team_one[:distance])} #{unit}"
+
+    .team.team--all
+      .team__info-wrapper.text-right
+        .team__name
+          = team_name
+        .team__info
+          = "#{format("%.2f", team_all[:distance])} #{unit}, #{I18n.t('participant', count: @team_all.participant_count)}"
+      .team__image
+        span.team__top-score
+          = "#{format("%.1f", all.total_distance.presence || 0)} #{unit}"
+        - if all&.avatar.present?
+          = image_tag(all.avatar.url(:main))
+        - else
+          = image_pack_tag all&.avatar(:main) || 'missing/participant.png'
+
+
+
+
+      / .team__points
+        .team__points-num = format("%.0f", points)
+        .team__points-label = I18n.t('points', count: points)
+
+    - percent = ((team_one[:points] / total_points) * 100).round(0)
+    .team-score-bar style="background: linear-gradient(90deg, var(--clr-1) #{percent}%, transparent #{percent}%);"
+      .team-score-bar__item
+        .points = format("%.0f", team_one[:points])
+        div = I18n.t('points', count: team_one[:points])
+      .team-score-bar__item.text-right
+        .points = format("%.0f", team_all[:points])
+        div = I18n.t('points', count: team_all[:points])
