@@ -44,6 +44,6 @@ class Team
   end
 
   def set_one_points
-    distance.to_f * 4
+    distance.to_f * 5
   end
 end
