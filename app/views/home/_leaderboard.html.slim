@@ -10,6 +10,8 @@ section#leaderboard
 
     - participants.each_with_index do |pt, i|
       - distance = pt.total_distance.presence || 0
+      - next if distance.zero?
+
       .team__participant
         .team__participant-rank
           span = i + 1
