@@ -1,5 +1,5 @@
 ActiveAdmin.register Participant do
-  menu priority: 3
+  menu priority: 2
 
   permit_params :name, :height, :avatar
 

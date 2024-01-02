@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_18_153023) do
+ActiveRecord::Schema.define(version: 2024_01_02_184707) do
 
   create_table "admin_users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,8 +48,18 @@ ActiveRecord::Schema.define(version: 2023_03_18_153023) do
     t.decimal "total_distance", precision: 8, scale: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "event_team_id"
     t.index ["event_id"], name: "index_event_participants_on_event_id"
+    t.index ["event_team_id"], name: "index_event_participants_on_event_team_id"
     t.index ["participant_id"], name: "index_event_participants_on_participant_id"
+  end
+
+  create_table "event_teams", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.decimal "total_distance", precision: 8, scale: 3
+    t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "events", charset: "utf8", force: :cascade do |t|

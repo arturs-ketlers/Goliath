@@ -1,14 +1,15 @@
 ActiveAdmin.register EventParticipant do
-  menu priority: 4
+  menu priority: 5
 
-  permit_params :participant_id, :event_id, :team, :avatar
+  permit_params :participant_id, :event_id, :event_team_id, :avatar
 
   form do |f|
     f.inputs do
       f.input :event, include_blank: false
       f.input :participant
-      f.input :team, collection: %w[all one], include_blank: false,
-                     selected: f.object.team.presence || 'all'
+      # f.input :team, collection: %w[all one], include_blank: false,
+      #                selected: f.object.team.presence || 'all'
+      f.input :event_team
     end
     f.actions
   end
@@ -23,7 +24,7 @@ ActiveAdmin.register EventParticipant do
     end
     column :name
     column :event
-    column :team
+    column :event_team
     column :total_distance
     actions
   end
@@ -37,7 +38,7 @@ ActiveAdmin.register EventParticipant do
           image_pack_tag(r.avatar.url(:main), class: 'avatar avatar--lg')
         end
       end
-      row :team
+      row :event_team
       row :total_distance
     end
   end

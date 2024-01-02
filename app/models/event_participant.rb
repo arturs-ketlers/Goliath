@@ -1,6 +1,7 @@
 class EventParticipant < ApplicationRecord
   belongs_to :participant
   belongs_to :event
+  belongs_to :event_team
 
   has_many :results, dependent: :destroy
 
@@ -21,6 +22,7 @@ class EventParticipant < ApplicationRecord
 
   def set_stats
     update_columns(total_distance: results.pluck(:distance)&.compact&.sum)
+    event_team&.update_total_distance
   end
 
   def steps_per_day

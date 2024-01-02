@@ -1,0 +1,78 @@
+- unit = Setting.uncached_value_for('unit')
+- total_distance = @event&.total_distance || 0.001
+section#leaderboard
+  .team
+    - @teams.each_with_index do |team, i|
+      - distance = team.total_distance.presence || 0
+      - next if distance.zero?
+
+      .team__participant
+        .team__participant-row.team__info
+          .team__participant-rank
+            span = i + 1
+
+          .team__participant-image
+            span[style="background-color: #{team.color}"]
+
+          .team__participant-info-wrapper
+            .team__participant-info
+              .team__participant-name = team.to_s
+              .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
+
+        .team__participant-row.team__participants
+          - participants = team.participants.order('total_distance desc')
+          - max_distance = participants.first.total_distance
+          - team.participants.order('total_distance desc').each do |pt|
+            - distance = pt.total_distance.presence || 0
+
+            .participant
+              .participant-image
+                - if pt.avatar.present?
+                  = image_tag(pt.avatar.url(:small_thumb), loading: "lazy")
+                - else
+                  = image_pack_tag(pt.avatar.url(:small_thumb), loading: "lazy")
+
+              .participant-info-wrapper
+                .team__participant-info
+                  .participant-name = pt.to_s
+                  .participant-distance = "#{format("%.1f", distance)} #{unit}"
+
+                .participant-distance-percentage-wrapper
+                  .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]
+
+              .team__participant-total-percentage
+                - dist_percentage_of_total = (distance / total_distance) * 100
+                span = "#{format("%.1f", dist_percentage_of_total)}"
+                span.p = '%'
+
+
+    - if false
+      - max = 1
+      - participants = @event.participants.order('total_distance desc')
+      - max_distance = participants.first.total_distance
+
+      - participants.each_with_index do |pt, i|
+        - distance = pt.total_distance.presence || 0
+        - next if distance.zero?
+
+        .team__participant
+          .team__participant-rank
+            span = i + 1
+          .team__participant-image
+            - if pt.avatar.present?
+              = image_tag(pt.avatar.url(:small_thumb), loading: "lazy")
+            - else
+              = image_pack_tag(pt.avatar.url(:small_thumb), loading: "lazy")
+
+          .team__participant-info-wrapper
+            .team__participant-info
+              .team__participant-name = pt.to_s
+              .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
+
+            .team__participant-distance-percentage-wrapper
+              .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]
+
+          .team__participant-total-percentage
+            - dist_percentage_of_total = (distance / total_distance) * 100
+            span.num = "#{format("%.1f", dist_percentage_of_total)}"
+            span.p = '%'

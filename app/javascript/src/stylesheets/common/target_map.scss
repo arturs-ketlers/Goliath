@@ -83,6 +83,15 @@ section#map .map {
     }
   }
 
+  &--ua {
+    stroke-width: 3;
+    stroke: #aaa;
+    &.path--current {
+      stroke: var(--clr-5);
+      stroke-dasharray: 3302;
+      stroke-width: 3;
+    }
+  }
 
 
   &--target {

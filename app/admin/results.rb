@@ -1,5 +1,5 @@
 ActiveAdmin.register Result do
-  menu priority: 5
+  menu priority: 9
 
   permit_params :event_participant_id, :date, :steps, :distance, :comment
 
