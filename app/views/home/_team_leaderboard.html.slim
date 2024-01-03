@@ -1,5 +1,7 @@
 - unit = Setting.uncached_value_for('unit')
 - total_distance = @event&.total_distance || 0.001
+- max_distance = @event.participants.order('total_distance desc').first.total_distance
+
 section#leaderboard
   .team
     - @teams.each_with_index do |team, i|
@@ -24,7 +26,6 @@ section#leaderboard
 
         .team__participant-row.team__participants
           - team_participants = team.participants.order('total_distance desc')
-          - max_distance = team_participants.first.total_distance
           - team_participants.order('total_distance desc').each do |pt|
             - distance = pt.total_distance.presence || 0
 
