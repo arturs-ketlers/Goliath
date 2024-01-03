@@ -6,14 +6,18 @@ ActiveAdmin.register EventTeam do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :color
+      f.input :color, as: :select, collection: EventTeam.colors_to_select
     end
     f.actions
   end
 
   index do
     column :name
-    column :color
+    column :color do |r|
+      if r.color.present?
+        image_tag("teams/#{r.color}.png")
+      end
+    end
     column :event_participants
     column :total_distance
     actions

@@ -65,6 +65,23 @@ lv:
     - Oktobris
     - Novembris
     - Decembris
+  event_team:
+    colors:
+      banana: 'Dzeltens (banana)'
+      lemon: 'Dzeltens (lemon)'
+      cherry: 'Sarkans (cherry)'
+      peach: 'Oranžš (peach)'
+      orange: 'Oranžš (orange)'
+      strawberry: 'Sarkans (strawberry)'
+      grapes: 'Zils (grapes)'
+      kiwi: 'Zaļš (kiwi)'
+      chili: 'Sarkans (chili)'
+      avocado: 'Zaļš (avocado)'
+      apple-green: 'Zaļš (apple-green)'
+      apple-red: 'Sarkans (apple-red)'
+      pear: 'Zaļš (pear)'
+      pineapple: 'Dzeltens (pineapple)'
+      watermelon: 'Zaļš (watermelon)'
   event:
     types:
       goliath: "Goliāts: One vs All"

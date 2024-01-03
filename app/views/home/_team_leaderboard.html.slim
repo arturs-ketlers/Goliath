@@ -11,8 +11,11 @@ section#leaderboard
           .team__participant-rank
             span = i + 1
 
-          .team__participant-image
-            span[style="background-color: #{team.color}"]
+          .team__participant-image[class="team__participant-image--#{team.color}"]
+            - if team.color.present?
+              = image_tag "teams/#{team.color}.png", loading: "lazy"
+            - else
+              span[style="background-color: #{team.color}"]
 
           .team__participant-info-wrapper
             .team__participant-info

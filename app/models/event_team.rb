@@ -8,4 +8,8 @@ class EventTeam < ApplicationRecord
   def update_total_distance
     update_columns(total_distance: participants.pluck(:total_distance)&.compact&.sum)
   end
+
+  def self.colors_to_select
+    I18n.t('event_team.colors').invert
+  end
 end

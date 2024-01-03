@@ -89,17 +89,28 @@ section#leaderboard .team {
 
   &__participant-image {
     flex-shrink: 0;
+    padding: 0.25rem;
+    outline: 4px solid;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+
     img, span {
       display: inline-block;
       vertical-align: bottom;
-      border-radius: 50%;
       width: 2.5rem;
       height: 2.5rem;
+      padding: 0.25rem;
       @media (min-width: 600px) {
         width: 3.25rem;
         height: 3.25rem;
       }
     }
+
+    &--banana     { outline-color: #FFD422; background-color: #FFD422; }
+    &--peach      { outline-color: #FF9478; background-color: #FF9478; }
+    &--grapes     { outline-color: #999FED; background-color: #999FED; }
+    &--strawberry { outline-color: #FF3358; background-color: #FF3358; }
   }
   .participant-image {
     display: none;
@@ -137,7 +148,8 @@ section#leaderboard .team {
   }
 
   &__participant-name, &__participant-distance {
-    font-weight: bold;
+    font-family: 'Russo One', cursive;
+    letter-spacing: 0.05em;
     @include fontClamp(0.875rem, 1.25rem);
   }
 
@@ -160,7 +172,6 @@ section#leaderboard .team {
 
   &__participant-distance {
     margin-left: auto;
-    letter-spacing: 0.05em;
   }
 
   &__participant-steps {
