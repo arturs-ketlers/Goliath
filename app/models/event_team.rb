@@ -12,4 +12,8 @@ class EventTeam < ApplicationRecord
   def self.colors_to_select
     I18n.t('event_team.colors').invert
   end
+
+  def total_steps
+    participants.map(&:total_steps).sum
+  end
 end

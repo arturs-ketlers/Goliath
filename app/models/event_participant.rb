@@ -37,4 +37,11 @@ class EventParticipant < ApplicationRecord
       days: days
     }
   end
+
+  def total_steps
+    steps = results.pluck(:steps).compact.sum
+    km = results.where(steps: nil).pluck(:distance).compact.sum
+    km_steps = (km / step_length * 1000).round(0)
+    steps + km_steps
+  end
 end

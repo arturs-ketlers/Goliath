@@ -5,6 +5,18 @@ section#leaderboard {
   &.bg--1 { background-image: linear-gradient(13deg, var(--clr-1), var(--clr-2)); }
 }
 
+.team-totals {
+  text-align: center;
+  &__distance {
+    font-family: 'Russo One', cursive;
+    letter-spacing: 0.05em;
+    @include fontClamp(1.25rem, 1.75rem);
+  }
+  &__distance-steps {
+    @include fontClamp(0.875rem, 1rem);
+  }
+}
+
 section#leaderboard .team {
   width: fit-content;
   min-width: min(20rem, 80vw);
@@ -155,8 +167,18 @@ section#leaderboard .team {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     gap: 0.25rem;
+
+    table td:first-child {
+      padding-inline: 0.5rem;
+      text-align: right;
+    }
+  }
+
+  &__participant-distance-steps {
+    @include fontClamp(0.75rem, 0.875rem);
   }
 
   &__participant-name, &__participant-distance {

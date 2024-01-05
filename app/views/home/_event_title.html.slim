@@ -1,1 +1,5 @@
-.section-title = @event.to_s
+.event
+  .event__title
+    = @event.to_s
+  .event__date
+    = [l(@event&.date_from, format: :date, default: nil), l(@event&.date_till, format: :date, default: nil)].compact.join(' - ').downcase

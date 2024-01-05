@@ -2,16 +2,20 @@
 
 .event {
   text-align: center;
-  margin-bottom: 1.25rem;
+  font-family: 'Russo One', cursive;
+  line-height: 1;
 
   &__title {
-    font-weight: bold;
-    @include fontClamp(1.25rem, 2rem);
+    margin-block: calc(2.5rem + 2vh) calc(0.5rem + 0.5vh);
+    @include fontClamp(1.5rem, 4.5rem);
   }
 
   &__date {
     margin-block: 0.25rem;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.25em;
     color: var(--secondary-text-clr);
-    @include fontClamp(0.875rem, 1rem);
+    @include fontClamp(1rem, 1.5rem);
   }
 }

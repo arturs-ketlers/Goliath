@@ -3,6 +3,14 @@
 - max_distance = @event.participants.order('total_distance desc').first.total_distance
 
 section#leaderboard
+  .team-totals
+    .team-totals__distance
+      = format("%.1f", total_distance)
+      =< unit
+    .team-totals__distance-steps
+      = @teams.map(&:total_steps).sum.to_i.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
+      =< 'soļi'
+
   .team
     - @teams.each_with_index do |team, i|
       - distance = team.total_distance.presence || 0
@@ -22,7 +30,13 @@ section#leaderboard
           .team__participant-info-wrapper
             .team__participant-info
               .team__participant-name = team.to_s
-              .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
+              table
+                tr.team__participant-distance
+                  td = format("%.1f", distance)
+                  td = unit
+                tr.team__participant-distance-steps
+                  td = team.total_steps.to_i.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
+                  td = 'soļi'
 
         .team__participant-row.team__participants
           - team_participants = team.participants.order('total_distance desc')
@@ -40,6 +54,7 @@ section#leaderboard
                 .team__participant-info
                   .participant-name = pt.to_s
                   .participant-distance = "#{format("%.1f", distance)} #{unit}"
+
 
                 .participant-distance-percentage-wrapper
                   .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]
