@@ -1,5 +1,6 @@
 - unit = Setting.uncached_value_for('unit')
 - total_distance = @event&.total_distance || 0.001
+- steps_round_by = 10
 - max_distance = @event.participants.order('total_distance desc').first.total_distance
 
 section#leaderboard
@@ -8,7 +9,8 @@ section#leaderboard
       = format("%.1f", total_distance)
       =< unit
     .team-totals__distance-steps
-      = @teams.map(&:total_steps).sum.to_i.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
+      - steps = @teams.map { |t| (t.total_steps.to_i / steps_round_by).round(0) * steps_round_by }.sum
+      = steps.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
       =< 'soļi'
 
   .team
@@ -35,7 +37,9 @@ section#leaderboard
                   td = format("%.1f", distance)
                   td = unit
                 tr.team__participant-distance-steps
-                  td = team.total_steps.to_i.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
+                  td
+                    - steps = (team.total_steps.to_i / steps_round_by).round(0) * steps_round_by
+                    = steps.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
                   td = 'soļi'
 
         .team__participant-row.team__participants
