@@ -1,0 +1,48 @@
+- unit = Setting.uncached_value_for('unit')
+- total_distance = @event&.total_distance || 0.001
+- steps_round_by = 10
+- participants = @event.participants.order('total_distance desc')
+- max_distance = participants.first.total_distance
+
+section#leaderboard
+  br
+  br
+  br
+  br
+  .section-title.section-title--sm = 'Soļotāji'
+  .team.team--solo
+    - participants.each_with_index do |pt, i|
+      - distance = pt.total_distance.presence || 0
+      - next if distance.zero?
+      - team = pt.event_team
+
+      .team__participant
+        .team__participant-row.team__info
+          .team__participant-rank
+            span = "#{i + 1}."
+
+          .team__participant-image[class="team__participant-image--#{team.color}"]
+            - if team&.color&.present?
+              = image_tag "teams/#{team.color}.png", loading: "lazy"
+            - else
+              span[style="background-color: #{team.color}"]
+
+          .team__participant-info-wrapper
+            .team__participant-info
+              table
+                tr.team__participant-name
+                  td.text-left = pt.to_s
+                tr.team__participant-slogan
+                  td.text-left = team.to_s
+              table
+                tr.team__participant-distance
+                  td = format("%.1f", distance)
+                  td = unit
+                tr.team__participant-distance-steps
+                  td
+                    - steps = (pt.total_steps.to_i / steps_round_by).round(0) * steps_round_by
+                    = steps.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
+                  td = 'soļi'
+
+            .participant-distance-percentage-wrapper
+              .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]

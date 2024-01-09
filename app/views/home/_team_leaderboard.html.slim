@@ -21,7 +21,7 @@ section#leaderboard
       .team__participant
         .team__participant-row.team__info
           .team__participant-rank
-            span = i + 1
+            span = "#{i + 1}."
 
           .team__participant-image[class="team__participant-image--#{team.color}"]
             - if team.color.present?
@@ -31,7 +31,11 @@ section#leaderboard
 
           .team__participant-info-wrapper
             .team__participant-info
-              .team__participant-name = team.to_s
+              table
+                tr.team__participant-name
+                  td.text-left = team.to_s
+                tr.team__participant-slogan
+                  td.text-left = team.slogan
               table
                 tr.team__participant-distance
                   td = format("%.1f", distance)
@@ -48,18 +52,10 @@ section#leaderboard
             - distance = pt.total_distance.presence || 0
 
             .participant
-              .participant-image
-                - if pt.avatar.present?
-                  = image_tag(pt.avatar.url(:small_thumb), loading: "lazy")
-                - else
-                  = image_pack_tag(pt.avatar.url(:small_thumb), loading: "lazy")
-
               .participant-info-wrapper
                 .team__participant-info
                   .participant-name = pt.to_s
                   .participant-distance = "#{format("%.1f", distance)} #{unit}"
-
-
                 .participant-distance-percentage-wrapper
                   .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]
 

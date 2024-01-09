@@ -12,4 +12,9 @@ section {
 
   margin-block: calc(2.5rem + 2vh) calc(1rem + 0.5vh);
   @include fontClamp(2rem, 5rem);
+
+  &--sm {
+    margin-block: calc(2rem + 2vh) calc(0.25rem + 0.25vh);
+    @include fontClamp(1.5rem, 3.5rem);
+  }
 }
