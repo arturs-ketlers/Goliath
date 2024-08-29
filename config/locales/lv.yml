@@ -87,6 +87,7 @@ lv:
       goliath: "Goliāts: One vs All"
       target: "Mērķis"
       teams: "Komandas"
+      solo: "Solo"
     target_types:
       distance: 'Distance'
       steps: 'Soļi'

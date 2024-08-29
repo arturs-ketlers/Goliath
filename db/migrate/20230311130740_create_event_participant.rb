@@ -1,4 +1,4 @@
-class CreateEventParticipant < ActiveRecord::Migration[6.1]
+class CreateEventParticipant < ActiveRecord::Migration[6.0]
   def self.up
     create_table :event_participants do |t|
       t.references :participant, index: true

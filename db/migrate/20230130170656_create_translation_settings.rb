@@ -1,4 +1,4 @@
-class CreateTranslationSettings < ActiveRecord::Migration[6.1]
+class CreateTranslationSettings < ActiveRecord::Migration[6.0]
   def change
     create_table :translation_settings do |t|
       t.string :key

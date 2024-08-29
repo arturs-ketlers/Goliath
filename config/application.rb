@@ -10,7 +10,7 @@ module Goliath
   class Application < Rails::Application
     config.encoding = "utf-8"
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
+    config.load_defaults 6.0
 
     # Configuration for the application, engines, and railties goes here.
     #

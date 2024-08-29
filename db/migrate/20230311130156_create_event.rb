@@ -1,4 +1,4 @@
-class CreateEvent < ActiveRecord::Migration[6.1]
+class CreateEvent < ActiveRecord::Migration[6.0]
   def self.up
     create_table :events do |t|
       t.string :name

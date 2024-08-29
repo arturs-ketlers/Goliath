@@ -2,8 +2,8 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `bin/rails
-# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2024_01_09_175633) do
 
-  create_table "admin_users", charset: "utf8", force: :cascade do |t|
+  create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_175633) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "ckeditor_assets", charset: "utf8", force: :cascade do |t|
+  create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
     t.integer "data_file_size"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_175633) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "event_participants", charset: "utf8", force: :cascade do |t|
+  create_table "event_participants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "participant_id"
     t.bigint "event_id"
     t.string "team"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_175633) do
     t.index ["participant_id"], name: "index_event_participants_on_participant_id"
   end
 
-  create_table "event_teams", charset: "utf8", force: :cascade do |t|
+  create_table "event_teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.decimal "total_distance", precision: 8, scale: 3
     t.string "color"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_175633) do
     t.string "slogan"
   end
 
-  create_table "events", charset: "utf8", force: :cascade do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "event_type"
     t.date "date_from"
@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 2024_01_09_175633) do
     t.decimal "target", precision: 8, scale: 3
   end
 
-  create_table "participants", charset: "utf8", force: :cascade do |t|
+  create_table "participants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "team"
-    t.string "avatar_file_name"
+    t.string "avatar_file_name", default: ""
+    t.integer "avatar_file_size"
     t.string "avatar_content_type"
-    t.bigint "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.decimal "total_distance", precision: 8, scale: 3
     t.datetime "created_at", precision: 6, null: false
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_175633) do
     t.decimal "height", precision: 4, scale: 2
   end
 
-  create_table "results", charset: "utf8", force: :cascade do |t|
+  create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.decimal "distance", precision: 8, scale: 3
     t.bigint "event_participant_id", null: false
     t.date "date"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_175633) do
     t.index ["event_participant_id"], name: "index_results_on_event_participant_id"
   end
 
-  create_table "settings", charset: "utf8", force: :cascade do |t|
+  create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "category"
     t.string "key"
     t.string "value"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_175633) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "translation_setting_translations", charset: "utf8", force: :cascade do |t|
+  create_table "translation_setting_translations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "translation_setting_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_175633) do
     t.index ["translation_setting_id"], name: "index_c54d1e2fee23dc6f811ae37eff51e34c0ea5c662"
   end
 
-  create_table "translation_settings", charset: "utf8", force: :cascade do |t|
+  create_table "translation_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key"
     t.string "content_type"
     t.string "category"

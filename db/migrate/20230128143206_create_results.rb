@@ -1,4 +1,4 @@
-class CreateResults < ActiveRecord::Migration[6.1]
+class CreateResults < ActiveRecord::Migration[6.0]
   def change
     create_table :results do |t|
       t.decimal :distance, precision: 8, scale: 3

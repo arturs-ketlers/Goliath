@@ -1,4 +1,4 @@
-class AddLastResultDateForParticipant < ActiveRecord::Migration[6.1]
+class AddLastResultDateForParticipant < ActiveRecord::Migration[6.0]
   def change
     add_column :participants, :last_result_date, :datetime
   end
