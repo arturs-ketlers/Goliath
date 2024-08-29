@@ -1,35 +1,81 @@
+/ - unit = Setting.uncached_value_for('unit')
+/ - total_distance = @event&.total_distance || 0.01
+/ - participants = @event.participants.order('total_distance desc')
+/ - max_distance = participants&.first&.total_distance
+
+/ - if participants.present?
+/   section#leaderboard
+/     .section-title = 'TOPS'
+
+/     .team
+/       - participants.each_with_index do |pt, i|
+/         - distance = pt.total_distance.presence || 0
+/         - next if distance.zero?
+
+/         .team__participant
+/           .team__participant-rank
+/             span = i + 1
+/           .team__participant-image
+/             / - if pt.avatar.present?
+/               / = image_tag(pt.avatar.url(:small_thumb), loading: "lazy")
+/             / - else
+/               = image_pack_tag(pt.avatar.url(:small_thumb), loading: "lazy")
+
+/           .team__participant-info-wrapper
+/             .team__participant-info
+/               .team__participant-name = pt.to_s
+/               .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
+
+/             .team__participant-distance-percentage-wrapper
+/               .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]
+
+/           .team__participant-total-percentage
+/             - dist_percentage_of_total = (distance / total_distance) * 100
+/             span.num = "#{format("%.1f", dist_percentage_of_total)}"
+/             span.p = '%'
+
+
 - unit = Setting.uncached_value_for('unit')
-- total_distance = @event&.total_distance || 0.01
-section#leaderboard
-  .section-title = 'TOPS'
+- total_distance = @event&.total_distance || 0.001
+- steps_round_by = 10
+- participants = @event.participants.order('total_distance desc')
+- max_distance = participants&.first.total_distance
 
-  .team
-    - max = 1
-    - participants = @event.participants.order('total_distance desc')
-    - max_distance = participants.first.total_distance
+- if participants.present?
+  - clr = 'banana'
+  section#leaderboard
+    br
 
-    - participants.each_with_index do |pt, i|
-      - distance = pt.total_distance.presence || 0
-      - next if distance.zero?
+    .section-title.section-title--sm = 'Soļotāji'
+    .team.team--solo
+      - participants.each_with_index do |pt, i|
+        - distance = pt.total_distance.presence || 0
+        - next if distance.zero?
+        / - team = pt.event_team
+        - team = nil
 
-      .team__participant
-        .team__participant-rank
-          span = i + 1
-        .team__participant-image
-          - if pt.avatar.present?
-            = image_tag(pt.avatar.url(:small_thumb), loading: "lazy")
-          - else
-            = image_pack_tag(pt.avatar.url(:small_thumb), loading: "lazy")
+        .team__participant
+          .team__participant-row.team__info
+            .team__participant-rank
+              span = "#{i + 1}."
 
-        .team__participant-info-wrapper
-          .team__participant-info
-            .team__participant-name = pt.to_s
-            .team__participant-distance = "#{format("%.1f", distance)} #{unit}"
+            .team__participant-image[class="team__participant-image--#{clr}"]
+              = image_tag "teams/#{clr}.png", loading: "lazy"
 
-          .team__participant-distance-percentage-wrapper
-            .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]
+            .team__participant-info-wrapper
+              .team__participant-info
+                table
+                  tr.team__participant-name
+                    td.text-left = pt.to_s
+                table
+                  tr.team__participant-distance
+                    td = format("%.1f", distance)
+                    td = unit
+                  tr.team__participant-distance-steps
+                    td
+                      - steps = (pt.total_steps.to_i / steps_round_by).round(0) * steps_round_by
+                      = steps.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
+                    td = 'soļi'
 
-        .team__participant-total-percentage
-          - dist_percentage_of_total = (distance / total_distance) * 100
-          span.num = "#{format("%.1f", dist_percentage_of_total)}"
-          span.p = '%'
+              .participant-distance-percentage-wrapper
+                .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]
