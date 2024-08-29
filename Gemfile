@@ -21,7 +21,7 @@ gem "slim-rails"
 gem 'simple_form'
 
 # Attachments
-gem 'paperclip', '6.1.0'
+gem 'paperclip'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
@@ -48,6 +48,10 @@ gem "browser"
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'dotenv-rails'
+
+gem 'omniauth'
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-oauth2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
