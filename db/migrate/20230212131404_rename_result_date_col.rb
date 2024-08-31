@@ -1,4 +1,4 @@
-class RenameResultDateCol < ActiveRecord::Migration[6.0]
+class RenameResultDateCol < ActiveRecord::Migration[6.1]
   def change
     rename_column :results, :datetime, :date
   end

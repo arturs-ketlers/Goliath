@@ -3,8 +3,8 @@ ruby File.read("#{File.dirname(__FILE__)}/.ruby-version").chomp
 # git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '6.0.3.4'
-gem 'rails-i18n'
+gem 'rails', '~> 6.0'
+gem 'rails-i18n', '~> 6.0'
 
 # Use mysql2 as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
@@ -36,7 +36,7 @@ gem 'webpacker', '~> 5.0'
 # gem 'image_processing', '~> 1.2'
 
 # Active admin / admin panel
-gem 'activeadmin', '2.12.0'
+gem 'activeadmin', github: 'activeadmin'
 gem 'ckeditor', '4.2.4'
 gem 'devise'
 gem 'globalize'
