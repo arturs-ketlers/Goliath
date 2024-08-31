@@ -110,10 +110,16 @@ section#leaderboard .team {
     img, span {
       display: inline-block;
       vertical-align: bottom;
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2rem;
+      height: 2rem;
       padding: 0.25rem;
+
       @media (min-width: 600px) {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      @media (min-width: 920px) {
         width: 3.25rem;
         height: 3.25rem;
       }
@@ -129,6 +135,8 @@ section#leaderboard .team {
     &--kiwi         { outline-color: #90CA03; background-color: #90CA03; }
     &--chili        { outline-color: #C70024; background-color: #C70024; }
     &--pineapple    { outline-color: #FDCB36; background-color: #FDCB36; }
+
+    &--autumn      { outline-color: #ffd69f; background-color: #ffd69f; }
 
     &--avocado      { outline-color: #AAA; background-color: #AAA; }
     &--apple-green  { outline-color: #AAA; background-color: #AAA; }
@@ -187,7 +195,7 @@ section#leaderboard .team {
   &__participant-name, &__participant-distance {
     font-family: 'Russo One', cursive;
     letter-spacing: 0.05em;
-    @include fontClamp(0.875rem, 1.25rem);
+    @include fontClamp(0.875rem, 1.125rem);
   }
 
   &__participant-date {
@@ -253,8 +261,7 @@ section#leaderboard .team {
   }
 
   &--solo {
-    margin-block: 0.5rem 1rem;
-    margin-block: calc(0.5rem + 1vh) calc(2rem + 5vh);
+    margin-block: calc(0.25rem + 1vh) calc(0.5rem + 4vh);
     .team {
       &__participant { padding: 0.5rem 0.5rem; }
       &__participant-image {
@@ -274,7 +281,7 @@ section#leaderboard .team {
       &__participant-distance-percentage {
         height: 0.25rem;
         min-width: 1px;
-        background-image: linear-gradient(13deg, var(--clr-2), var(--clr-1));
+        background-image: linear-gradient(13deg, var(--clr-a1), var(--clr-a2));
       }
     }
   }
