@@ -3,7 +3,6 @@
 - steps_round_by = 10
 - participants = @event.participants.order('total_distance desc')
 - max_distance = participants&.first.total_distance
-- target_type = @event&.target_type
 
 - if participants.present?
   section#leaderboard
