@@ -187,15 +187,26 @@ section#leaderboard .team {
     }
   }
 
-  &__participant-distance-steps, &__participant-slogan {
+  &__participant-slogan {
     color: var(--secondary-text-clr);
     @include fontClamp(0.75rem, 0.875rem);
   }
 
-  &__participant-name, &__participant-distance {
+  &__participant-name {
     font-family: 'Russo One', cursive;
     letter-spacing: 0.05em;
     @include fontClamp(0.875rem, 1.125rem);
+  }
+
+  &__participant-distance {
+    color: var(--secondary-text-clr);
+    @include fontClamp(0.75rem, 0.875rem);
+  }
+
+  &__participant-distance-steps {
+    font-family: 'Russo One', cursive;
+    letter-spacing: 0.05em;
+    @include fontClamp(0.75rem, 1rem);
   }
 
   &__participant-date {
