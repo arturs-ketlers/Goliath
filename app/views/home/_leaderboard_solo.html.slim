@@ -2,7 +2,7 @@
 / - total_distance = @event&.total_distance || 0.001
 - steps_round_by = 10
 - participants = @event.participants.map { |pt| { id: pt.id, name: pt.to_s, km: pt.total_distance, steps: (pt.total_steps.to_i / steps_round_by).round(0) * steps_round_by } }.sort_by { |h| -h[:steps].to_i }
-- max_distance = participants&.first.try(:[], :steps)
+- max_steps = participants&.first.try(:[], :steps).to_f
 
 - if participants.present?
   section#leaderboard
@@ -12,7 +12,8 @@
     .team.team--solo
       - participants.each_with_index do |pt, i|
         - distance = pt[:km].presence || 0
-        - next if distance.zero?
+        - steps = pt[:steps].presence || 0
+        - next if steps.zero?
 
         - variant = pt[:id].to_s[-1]
 
@@ -31,7 +32,7 @@
                     td.text-left = pt[:name]
                 table
                   tr.team__participant-distance-steps
-                    td = pt[:steps].to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
+                    td = steps.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1 ').reverse
                     td = 'soļi'
 
                   tr.team__participant-distance
@@ -39,4 +40,4 @@
                     td = unit
 
               .participant-distance-percentage-wrapper
-                .team__participant-distance-percentage[style="width: #{(distance / max_distance * 100).round(2)}%"]
+                .team__participant-distance-percentage[style="width: #{(steps / max_steps * 100).round(2)}%"]
