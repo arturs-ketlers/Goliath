@@ -1,0 +1,16 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: 5
+  username: your_db_username
+  password: your_db_password
+  variables:
+    sql_mode: TRADITIONAL
+
+development:
+  database: goliath_dev
+  <<: *default
+
+test:
+  database: goliath_test
+  <<: *default
