@@ -5,7 +5,7 @@ ActiveAdmin.register EventParticipant do
 
   form do |f|
     f.inputs do
-      f.input :event, include_blank: false
+      f.input :event, include_blank: false, collection: Event.where(is_active: true)
       f.input :participant
       # f.input :team, collection: %w[all one], include_blank: false,
       #                selected: f.object.team.presence || 'all'
